@@ -5,23 +5,38 @@
 .LessonHeader h2 {
   margin: 0;
   flex: 1;
+  display: flex;
+}
+.LessonHeader__number {
+}
+.LessonHeader__name {
+  flex: 1;
+  padding: 0 .3em;
 }
 .LessonHeader input {
-  font-size: inherit;
+  font: inherit;
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: .3em;
+  border: none;
+  box-shadow: inset 1px 1px 4px rgba(0,0,0,0.3);
 }
 .LessonHeader__steps {
   display: flex;
   align-items: stretch;
+  padding-right: .3em;
 }
 .LessonHeader__step {
   width: 2em;
   line-height: 1.9em;
   text-align: center;
+  cursor: pointer;
 }
 .LessonHeader__step--active {
   background-color: #333;
   color: #fff;
   border-radius: 50%;
+  cursor: default;
 }
 .LessonHeader__buttons > button {
   height: 100%;
