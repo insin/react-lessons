@@ -1,5 +1,7 @@
 var {
+  ADD_LESSON,
   ADD_STEP,
+  DELETE_LESSON,
   DELETE_STEP,
   SELECT_LESSON,
   SELECT_STEP,
@@ -8,9 +10,21 @@ var {
   UPDATE_STEP
 } = require('../ActionTypes')
 
+function addLesson() {
+  return {
+    type: ADD_LESSON,
+  }
+}
+
 function addStep() {
   return {
     type: ADD_STEP,
+  }
+}
+
+function deleteLesson() {
+  return {
+    type: DELETE_LESSON
   }
 }
 
@@ -55,4 +69,8 @@ function updateStep(update) {
   }
 }
 
-module.exports = {addStep, deleteStep, selectLesson, selectStep, toggleEditing, updateLesson, updateStep}
+module.exports = {
+  toggleEditing,
+  addLesson, selectLesson, updateLesson, deleteLesson,
+  addStep, selectStep, updateStep, deleteStep
+}
