@@ -39,11 +39,7 @@ var Lesson = React.createClass({
   },
   render() {
     return <div className="Lesson">
-      <LessonHeader
-        lesson={this.props.lesson}
-        lessonNumber={this.props.lessonNumber}
-        currentStepIndex={this.props.currentStepIndex}
-      />
+      <LessonHeader {...this.props}/>
       <div className="Lesson__boxxy" ref="boxxy"/>
     </div>
   },

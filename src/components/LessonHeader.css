@@ -6,6 +6,9 @@
   margin: 0;
   flex: 1;
 }
+.LessonHeader input {
+  font-size: inherit;
+}
 .LessonHeader__steps {
   display: flex;
   align-items: stretch;

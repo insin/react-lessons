@@ -11,7 +11,11 @@ var Lessons = React.createClass({
     var currentStep = currentLesson.steps[currentStepIndex]
     return <div className="Lessons">
       <div className="Lessons__menu">
-        <LessonMenu lessons={lessons} currentLessonIndex={currentLessonIndex}/>
+        <LessonMenu
+          lessons={lessons}
+          currentLessonIndex={currentLessonIndex}
+          {...actions}
+        />
       </div>
       <Lesson
         lesson={currentLesson}
@@ -21,8 +25,7 @@ var Lessons = React.createClass({
         lessonNumber={currentLessonIndex + 1}
         stepNumber={currentStepIndex + 1}
         editing={editing}
-        onCodeChange={actions.updateCode}
-        onTextChange={actions.updateText}
+        {...actions}
       />
     </div>
   }

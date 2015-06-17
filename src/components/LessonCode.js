@@ -7,7 +7,7 @@ var LessonCode = React.createClass({
   render() {
     return <div className="LessonCode">
       <CodeMirror
-        onChange={this.props.onCodeChange}
+        onChange={code => this.props.updateLesson({code})}
         options={{lineNumbers: true, mode: 'javascript'}}
         value={this.props.step.code}
       />

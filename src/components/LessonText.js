@@ -9,7 +9,11 @@ var LessonText = React.createClass({
     var {step} = this.props
     return <div className="LessonText">
       {this.props.editing
-       ? <CodeMirror value={step.text} options={{mode: 'markdown', lineWrapping: true}} onChange={this.props.onTextChange}/>
+       ? <CodeMirror
+            onChange={text => this.props.updateLesson({text})}
+            options={{mode: 'markdown', lineWrapping: true}}
+            value={step.text}
+          />
        : <div className="markdown-body" dangerouslySetInnerHTML={{__html: marked(step.text)}}/>
       }
     </div>

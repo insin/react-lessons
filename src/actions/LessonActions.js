@@ -1,10 +1,24 @@
 var {
+  ADD_STEP,
+  DELETE_STEP,
   SELECT_LESSON,
   SELECT_STEP,
   TOGGLE_EDITING,
-  UPDATE_CODE,
-  UPDATE_TEXT
+  UPDATE_LESSON,
+  UPDATE_STEP
 } = require('../ActionTypes')
+
+function addStep() {
+  return {
+    type: ADD_STEP,
+  }
+}
+
+function deleteStep() {
+  return {
+    type: DELETE_STEP
+  }
+}
 
 function selectLesson(lessonIndex) {
   return {
@@ -27,18 +41,18 @@ function toggleEditing(editing) {
   }
 }
 
-function updateCode(code) {
+function updateLesson(update) {
   return {
-    type: UPDATE_CODE,
-    code
+    type: UPDATE_LESSON,
+    update
   }
 }
 
-function updateText(text) {
+function updateStep(update) {
   return {
-    type: UPDATE_TEXT,
-    text
+    type: UPDATE_STEP,
+    update
   }
 }
 
-module.exports = {selectLesson, selectStep, toggleEditing, updateCode, updateText}
+module.exports = {addStep, deleteStep, selectLesson, selectStep, toggleEditing, updateLesson, updateStep}
