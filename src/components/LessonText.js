@@ -10,7 +10,7 @@ var LessonText = React.createClass({
     return <div className="LessonText">
       {this.props.editing
        ? <CodeMirror
-            onChange={text => this.props.updateLesson({text})}
+            onChange={text => this.props.updateStep({text})}
             options={{mode: 'markdown', lineWrapping: true}}
             value={step.text}
           />
