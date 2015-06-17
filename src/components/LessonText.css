@@ -1,0 +1,10 @@
+.LessonText {
+  height: 100%;
+}
+.LessonText .ReactCodeMirror, .LessonText .CodeMirror {
+  height: 100%;
+}
+
+.LessonText .markdown-body {
+  padding: .5em;
+}

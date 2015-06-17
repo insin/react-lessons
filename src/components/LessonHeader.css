@@ -1,0 +1,25 @@
+.LessonHeader {
+  padding-bottom: .5em;
+  display: flex;
+}
+.LessonHeader h2 {
+  margin: 0;
+  flex: 1;
+}
+.LessonHeader__steps {
+  display: flex;
+  align-items: stretch;
+}
+.LessonHeader__step {
+  width: 2em;
+  line-height: 1.9em;
+  text-align: center;
+}
+.LessonHeader__step--active {
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+}
+.LessonHeader__buttons > button {
+  height: 100%;
+}

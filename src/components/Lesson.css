@@ -1,0 +1,14 @@
+.Lesson {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.Lesson__boxxy {
+  flex-grow: 1;
+  position: relative;
+}
+.boxxy-inner {
+  padding: 0.3em;
+  box-shadow: inset 1px 1px 4px rgba(0,0,0,0.3);
+}

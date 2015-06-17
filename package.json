@@ -1,0 +1,30 @@
+{
+  "name": "react-lessons",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "babel-core": "^5.5.6",
+    "babel-eslint": "^3.1.15",
+    "babel-loader": "^5.1.4",
+    "css-loader": "^0.14.5",
+    "eslint": "^0.22.1",
+    "eslint-plugin-react": "^2.5.0",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
+    "react-hot-loader": "^1.2.2",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.9.10",
+    "webpack-dev-server": "^1.9.0"
+  },
+  "dependencies": {
+    "boxxy": "^0.2.2",
+    "classnames": "^2.1.2",
+    "codemirror": "^5.3.0",
+    "github-markdown-css": "^2.0.9",
+    "marked": "^0.3.3",
+    "react": "^0.13.0",
+    "react-codemirror": "^0.1.2",
+    "redux": "^0.11.1"
+  }
+}

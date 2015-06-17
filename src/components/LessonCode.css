@@ -1,0 +1,6 @@
+.LessonCode {
+  height: 100%;
+}
+.LessonCode .ReactCodeMirror, .LessonCode .CodeMirror {
+  height: 100%;
+}
