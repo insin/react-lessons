@@ -1,15 +1,17 @@
 .LessonMenu {
   padding-right: .5em;
 }
-.LessonMenu .number {
+.LessonMenu__number {
   display: block;
   width: 1.6em;
   height: 1.6em;
   line-height: 1.7em;
   text-align: center;
+  cursor: pointer;
 }
-.LessonMenu .active .number {
+.LessonMenu__lesson--active .LessonMenu__number {
   background-color: #333;
   color: #fff;
   border-radius: 50%;
+  cursor: default;
 }
