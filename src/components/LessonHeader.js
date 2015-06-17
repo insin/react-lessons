@@ -5,7 +5,10 @@ require('./LessonHeader.css')
 
 var LessonHeader = React.createClass({
   render() {
-    var {addStep, currentStepIndex, editing, lesson, lessonNumber, selectStep, updateLesson} = this.props
+    var {
+      currentStepIndex, editing, lesson, lessonNumber,
+      addStep, selectStep, updateLesson
+    } = this.props
     return <div className="LessonHeader">
       <h2>
         <span className="LessonHeader__number">{lessonNumber}.</span>

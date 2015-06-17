@@ -12,13 +12,13 @@ var {
 
 function addLesson() {
   return {
-    type: ADD_LESSON,
+    type: ADD_LESSON
   }
 }
 
 function addStep() {
   return {
-    type: ADD_STEP,
+    type: ADD_STEP
   }
 }
 

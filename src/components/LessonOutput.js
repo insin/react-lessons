@@ -15,7 +15,9 @@ var LessonOutput = React.createClass({
   executeCode(props) {
     props = props || this.props
     var code = babel.transform(props.code).code
+    /*eslint-disable no-new-func */
     var func = new Function('React', 'output', code)
+    /*eslint-enable no-new-func */
     func.call(this, React, React.findDOMNode(this.refs.output))
   },
   render() {
