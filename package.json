@@ -1,7 +1,8 @@
 {
   "name": "react-lessons",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint src"
   },
   "devDependencies": {
     "babel-core": "^5.5.8",
