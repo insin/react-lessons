@@ -46,7 +46,9 @@ var Lesson = React.createClass({
   renderBoxxyContent(props) {
     props = props || this.props
     var {lesson, output, code} = this.boxxy.blocks
-    React.render(<LessonText {...props}/>, lesson)
+    React.render(<LessonText text={props.step.text}
+                             editing={props.editing}
+                             updateStep={props.updateStep}/>, lesson)
     React.render(<LessonOutput code={props.step.code}/>, output)
     React.render(<LessonCode {...props}/>, code)
   }
