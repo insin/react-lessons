@@ -2,13 +2,11 @@
   "extends": ["standard", "standard-react"],
   "rules": {
     "brace-style": [2, "stroustrup", { "allowSingleLine": true }],
+    "eqeqeq": [2, "smart"],
     "react/jsx-quotes": 0,
     "react/prop-types": 0,
     "react/wrap-multilines": 0,
-    "space-before-function-paren": [2, {
-      "anonymous": "always",
-      "named": "never"
-    }],
+    "space-before-function-paren": 0
   },
   "parser": "babel-eslint"
 }

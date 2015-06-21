@@ -22,7 +22,7 @@ var LessonsApp = React.createClass({
       a.dispatchEvent(event)
     }
     else if (typeof navigator.msSaveBlob == 'function') {
-      navigator.msSaveBlob(new Blob([json], {
+      navigator.msSaveBlob(new window.Blob([json], {
         type: 'text/json;charset=utf-8;'
       }), filename)
     }
@@ -42,14 +42,14 @@ var LessonsApp = React.createClass({
       return
     }
 
-    var reader = new FileReader()
+    var reader = new window.FileReader()
     reader.onload = (e) => {
       var json = e.target.result
       try {
         importLessons(JSON.parse(json))
       }
       catch (e) {
-        alert('Unable to import lessons - invalid JSON?')
+        window.alert('Unable to import lessons - invalid JSON?')
       }
     }
     reader.readAsText(e.dataTransfer.files[0])
