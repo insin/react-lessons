@@ -1,12 +1,14 @@
 var CodeMirror = require('react-codemirror')
 var marked = require('marked')
 var React = require('react')
-var shouldComponentUpdate = require('react-pure-render/function')
 
 require('./LessonText.css')
 
 var LessonText = React.createClass({
-  shouldComponentUpdate,
+  shouldComponentUpdate(nextProps) {
+    return (this.props.text !== nextProps.text ||
+            this.props.editing !== nextProps.editing)
+  },
   render() {
     var {editing, text, updateStep} = this.props
     return <div className="LessonText">
