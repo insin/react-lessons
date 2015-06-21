@@ -3,6 +3,7 @@ var {
   ADD_STEP,
   DELETE_LESSON,
   DELETE_STEP,
+  IMPORT_LESSONS,
   SELECT_LESSON,
   SELECT_STEP,
   TOGGLE_EDITING,
@@ -31,6 +32,13 @@ function deleteLesson() {
 function deleteStep() {
   return {
     type: DELETE_STEP
+  }
+}
+
+function importLessons(lessons) {
+  return {
+    type: IMPORT_LESSONS,
+    lessons
   }
 }
 
@@ -71,6 +79,6 @@ function updateStep(update) {
 
 module.exports = {
   toggleEditing,
-  addLesson, selectLesson, updateLesson, deleteLesson,
+  addLesson, selectLesson, updateLesson, deleteLesson, importLessons,
   addStep, selectStep, updateStep, deleteStep
 }

@@ -3,6 +3,7 @@ var {
   ADD_STEP,
   DELETE_LESSON,
   DELETE_STEP,
+  IMPORT_LESSONS,
   SELECT_LESSON,
   SELECT_STEP,
   TOGGLE_EDITING,
@@ -12,7 +13,7 @@ var {
 
 var update = require('react/lib/update')
 
-var defaultStep = {text: '', code: '', solution: ''}
+var defaultStep = {text: '', code: ''}
 var defaultLesson = {name: '', steps: [{...defaultStep}]}
 
 module.exports = function lessons(state, action) {
@@ -50,6 +51,13 @@ module.exports = function lessons(state, action) {
                          state.lessons[state.currentLessonIndex].steps.length - 2)
         }
       })
+    case IMPORT_LESSONS:
+      return {
+        editing: false,
+        lessons: action.lessons,
+        currentLessonIndex: 0,
+        currentStepIndex: 0
+      }
     case TOGGLE_EDITING:
       return {...state, editing: action.editing}
     case SELECT_LESSON:
