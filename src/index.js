@@ -1,5 +1,5 @@
-require('../node_modules/github-markdown-css/github-markdown.css')
-require('../node_modules/codemirror/lib/codemirror.css')
+require('github-markdown-css/github-markdown.css')
+require('codemirror/lib/codemirror.css')
 
 require('codemirror')
 require('codemirror/mode/javascript/javascript')
