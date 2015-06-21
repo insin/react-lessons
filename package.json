@@ -10,6 +10,8 @@
     "babel-loader": "^5.1.4",
     "css-loader": "^0.15.1",
     "eslint": "^0.23.0",
+    "eslint-config-standard": "^3.3.0",
+    "eslint-config-standard-react": "^1.0.0",
     "eslint-plugin-react": "^2.5.0",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
