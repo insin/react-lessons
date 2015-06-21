@@ -21,6 +21,7 @@
     "webpack-dev-server": "^1.9.0"
   },
   "dependencies": {
+    "base-64": "^0.1.0",
     "boxxy": "^0.2.2",
     "classnames": "^2.1.2",
     "codemirror": "^5.3.0",
