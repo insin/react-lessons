@@ -1,3 +1,13 @@
 .LessonOutput {
   padding: .5em;
 }
+.LessonOutput__error {
+  background-color: #fdd;
+  color: #f00;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: .5em;
+  border: 1px solid #f99;
+}
