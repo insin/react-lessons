@@ -11,74 +11,19 @@ var {
   UPDATE_STEP
 } = require('../ActionTypes')
 
-function addLesson() {
-  return {
-    type: ADD_LESSON
-  }
-}
-
-function addStep() {
-  return {
-    type: ADD_STEP
-  }
-}
-
-function deleteLesson() {
-  return {
-    type: DELETE_LESSON
-  }
-}
-
-function deleteStep() {
-  return {
-    type: DELETE_STEP
-  }
-}
-
-function importLessons(lessons) {
-  return {
-    type: IMPORT_LESSONS,
-    lessons
-  }
-}
-
-function selectLesson(lessonIndex) {
-  return {
-    type: SELECT_LESSON,
-    lessonIndex
-  }
-}
-
-function selectStep(stepIndex) {
-  return {
-    type: SELECT_STEP,
-    stepIndex
-  }
-}
-
-function toggleEditing(editing) {
-  return {
-    type: TOGGLE_EDITING,
-    editing
-  }
-}
-
-function updateLesson(update) {
-  return {
-    type: UPDATE_LESSON,
-    update
-  }
-}
-
-function updateStep(update) {
-  return {
-    type: UPDATE_STEP,
-    update
-  }
-}
+var createAction = (type, ...props) =>
+  (...args) =>
+    props.reduce((action, prop, i) => (action[prop] = args[i], action), {type})
 
 module.exports = {
-  toggleEditing,
-  addLesson, selectLesson, updateLesson, deleteLesson, importLessons,
-  addStep, selectStep, updateStep, deleteStep
+  addLesson: createAction(ADD_LESSON),
+  addStep: createAction(ADD_STEP),
+  deleteLesson: createAction(DELETE_LESSON),
+  deleteStep: createAction(DELETE_STEP),
+  importLessons: createAction(IMPORT_LESSONS, 'lessons'),
+  selectLesson: createAction(SELECT_LESSON, 'lessonIndex'),
+  selectStep: createAction(SELECT_STEP, 'stepIndex'),
+  toggleEditing: createAction(TOGGLE_EDITING, 'editing'),
+  updateLesson: createAction(UPDATE_LESSON, 'update'),
+  updateStep: createAction(UPDATE_STEP, 'update')
 }
