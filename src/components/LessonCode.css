@@ -1,7 +1,51 @@
 .LessonCode {
   height: 100%;
+  display: flex;
+  flex-direction: column
 }
-.LessonCode .ReactCodeMirror, .LessonCode .CodeMirror {
+.LessonCode .ReactCodeMirror {
+  flex: 1;
+  overflow: hidden;
+}
+.LessonCode .CodeMirror {
   height: 100%;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 14px;
+}
+.LessonCode__tabs {
+  position: relative;
+  background-color: #f7f7f7;
+}
+.LessonCode__tabs:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #ddd;
+  z-index: 1;
+}
+.LessonCode__tab {
+  display: inline-block;
+  padding: .3em .75em;
+  cursor: pointer;
+  border-right: 1px solid #ddd;
+  color: #777;
+}
+.LessonCode__tab:hover {
+  color: #444;
+  background-color: #fbfbfb;
+}
+.LessonCode__tab--active {
+  cursor: default;
+  color: #000 !important;
+  background-color: #fff !important;
+}
+.LessonCode__buttons {
+  text-align: right;
+}
+.LessonCode__execute {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .3em .5em;
 }

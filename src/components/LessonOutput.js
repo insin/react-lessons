@@ -21,15 +21,19 @@ var LessonOutput = React.createClass({
     props = props || this.props
     var output = React.findDOMNode(this.refs.output)
     var errorMessage = ''
-    try {
-      var code = babel.transform(props.code).code
-      /*eslint-disable no-new-func */
-      var func = new Function('React', 'output', code)
-      /*eslint-enable no-new-func */
-      func.call(this, React, output)
+    if (props.code) {
+      try {
+        var code = babel.transform(props.code).code
+        /*eslint-disable no-new-func */
+        var func = new Function('React', 'output', code)
+        /*eslint-enable no-new-func */
+        func.call(this, React, output)
+      }
+      catch (e) {
+        errorMessage = e.message
+      }
     }
-    catch (e) {
-      errorMessage = e.message
+    if (errorMessage || !props.code) {
       React.unmountComponentAtNode(output)
     }
     this.setState({errorMessage})

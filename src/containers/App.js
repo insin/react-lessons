@@ -24,11 +24,12 @@ var redux = createRedux(stores, {
   lessons: {
     editing: false,
     lessons: [{
-      name: 'Lesson',
+      name: 'Lesson name',
       steps: [
-        {text: DEFAULT_TEXT, code: DEFAULT_CODE}
+        {text: DEFAULT_TEXT, code: DEFAULT_CODE, solution: ''}
       ]
     }],
+    currentCode: '',
     currentLessonIndex: 0,
     currentStepIndex: 0
   }

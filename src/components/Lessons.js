@@ -6,7 +6,7 @@ require('./Lessons.css')
 
 var Lessons = React.createClass({
   render() {
-    var {editing, lessons, currentLessonIndex, currentStepIndex, actions} = this.props
+    var {editing, lessons, currentCode, currentLessonIndex, currentStepIndex, actions} = this.props
     var currentLesson = lessons[currentLessonIndex]
     var currentStep = currentLesson.steps[currentStepIndex]
     return <div className="Lessons">
@@ -20,6 +20,7 @@ var Lessons = React.createClass({
       <Lesson
         lesson={currentLesson}
         step={currentStep}
+        currentCode={currentCode}
         currentLessonIndex={currentLessonIndex}
         currentStepIndex={currentStepIndex}
         lessonNumber={currentLessonIndex + 1}

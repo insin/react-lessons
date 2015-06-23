@@ -49,7 +49,7 @@ var Lesson = React.createClass({
     React.render(<LessonText text={props.step.text}
                              editing={props.editing}
                              updateStep={props.updateStep}/>, lesson)
-    React.render(<LessonOutput code={props.step.code}/>, output)
+    React.render(<LessonOutput code={props.currentCode}/>, output)
     React.render(<LessonCode {...props}/>, code)
   }
 })
