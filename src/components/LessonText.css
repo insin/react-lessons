@@ -3,6 +3,8 @@
 }
 .LessonText .ReactCodeMirror, .LessonText .CodeMirror {
   height: 100%;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 14px;
 }
 
 .LessonText .markdown-body {
