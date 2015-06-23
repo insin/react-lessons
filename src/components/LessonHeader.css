@@ -38,6 +38,7 @@
   border-radius: 50%;
   cursor: default;
 }
-.LessonHeader__buttons > button {
-  height: 100%;
+.LessonHeader__buttons {
+  display: flex;
+  align-items: stretch;
 }
