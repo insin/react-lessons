@@ -3,4 +3,5 @@
 }
 .LessonCode .ReactCodeMirror, .LessonCode .CodeMirror {
   height: 100%;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }

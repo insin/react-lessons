@@ -1,6 +1,9 @@
 .LessonOutput {
   padding: .5em;
 }
+.LessonOutput p {
+  margin: 0 0 .5em;
+}
 .LessonOutput__error {
   background-color: #fdd;
   color: #f00;
