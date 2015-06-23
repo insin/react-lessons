@@ -15,6 +15,10 @@
 .LessonCode__tabs {
   position: relative;
   background-color: #f7f7f7;
+  text-align: right;
+}
+.LessonCode__tabs:before {
+  z-index: 1;
 }
 .LessonCode__tabs:after {
   position: absolute;
@@ -27,10 +31,17 @@
 }
 .LessonCode__tab {
   display: inline-block;
-  padding: .3em .75em;
+  padding: .3em 1em;
   cursor: pointer;
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
   border-right: 1px solid #ddd;
   color: #777;
+  position: relative;
+  z-index: 0;
+  margin-right: 5px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 .LessonCode__tab:hover {
   color: #444;
@@ -40,6 +51,8 @@
   cursor: default;
   color: #000 !important;
   background-color: #fff !important;
+  border-bottom: 1px solid #fff;
+  z-index: 2;
 }
 .LessonCode__buttons {
   text-align: right;
