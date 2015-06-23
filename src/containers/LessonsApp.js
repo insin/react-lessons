@@ -1,34 +1,15 @@
-var Base64 = require('base-64')
 var React = require('react')
 var {bindActionCreators} = require('redux')
 var {Connector} = require('redux/react')
 var Lessons = require('../components/Lessons')
 var LessonActions = require('../actions/LessonActions')
+var exportJSON = require('../utils/export-json')
 
 require('./LessonsApp.css')
 
 var LessonsApp = React.createClass({
-  exportLessons(lessons) {
-    var filename = 'react-lessons.json'
-    var json = JSON.stringify(lessons, null, 2)
-    var json64 = Base64.encode(json)
-    var a = document.createElement('a')
-    if ('download' in a) {
-      a.href = `data:text/json;base64,${json64}`
-      a.download = filename
-      var event = document.createEvent('MouseEvents')
-      event.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0,
-                           false, false, false, false, 0, null)
-      a.dispatchEvent(event)
-    }
-    else if (typeof navigator.msSaveBlob == 'function') {
-      navigator.msSaveBlob(new window.Blob([json], {
-        type: 'text/json;charset=utf-8;'
-      }), filename)
-    }
-    else {
-      window.location.href = `data:application/octet-stream;base64,${json64}`
-    }
+  handleExportLessons(lessons) {
+    exportJSON(lessons, 'react-lessons.json')
   },
 
   handleDragOver(e) {
@@ -84,7 +65,7 @@ var LessonsApp = React.createClass({
               </button>}
               {' | '}
             </span>}
-            <button type="button" onClick={this.exportLessons.bind(this, lessons.lessons)}>
+            <button type="button" onClick={this.handleExportLessons.bind(this, lessons.lessons)}>
               Export
             </button>
             {' | Drop a lesson .json file here to import'}
