@@ -39,6 +39,7 @@ var LessonsApp = React.createClass({
   },
   handleDragOver(e) {
     e.preventDefault()
+    e.dataTransfer.dropEffect = 'copy'
   },
   handleDrop(importLessons, e) {
     e.preventDefault()
