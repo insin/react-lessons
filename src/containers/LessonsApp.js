@@ -9,6 +9,7 @@ require('./LessonsApp.css')
 
 var INSTRUCTIONS_LESSON = {
   "name": "React Lessons Instructions",
+  "instructions": true,
   "steps": [
     {
       "text": "## React Lessons\n\nReact Lessons is a tool for creating - and taking - interactive [React](http://facebook.github.io/react/) tutorials.\n\nEach lesson can include one or more steps (numbered across the top-right of the page).\n\n### Lesson steps\n\nA lesson step consists of:\n\n* Text explaining the purpose of the step, providing learning material and\n  giving instructions for the piece of code that needs to be written using the\n  material introduced by the step.\n\n* An outline for code to be written to practice the step's material.\n\nClick the \"Next\" button below to proceed to the next step and try some coding.",
@@ -45,9 +46,27 @@ var LessonsApp = React.createClass({
   handleExportLessons(lessons) {
     exportJSON(lessons, 'react-lessons.json')
   },
-  handleViewInstructions(dispatch, lessonIndex) {
-    dispatch(LessonActions.importLessons(INSTRUCTIONS_LESSON))
-    dispatch(LessonActions.selectLesson(lessonIndex))
+  handleViewInstructions(dispatch, lessons, currentLessonIndex) {
+    // Check if the instructions are already being displayed as a lesson
+    var instructionsIndex = -1
+    for (var i = 0; i < lessons.length; i++) {
+      if (lessons[i].instructions) {
+        instructionsIndex = 1
+        break
+      }
+    }
+
+    // Only add the instructions lesson if it's not already there
+    if (instructionsIndex === -1) {
+      dispatch(LessonActions.importLessons(INSTRUCTIONS_LESSON))
+      instructionsIndex = lessons.length
+    }
+
+    // Only select the instructions lesson if we're not already doing so, as it
+    // will switch back to the first step if already selected.
+    if (instructionsIndex !== currentLessonIndex) {
+      dispatch(LessonActions.selectLesson(instructionsIndex))
+    }
   },
   handleDragOver(e) {
     e.preventDefault()
@@ -110,7 +129,7 @@ var LessonsApp = React.createClass({
               </button>
             </span>}
             {' | '}
-            <button type="button" onClick={this.handleViewInstructions.bind(this, dispatch, lessons.lessons.length)}>
+            <button type="button" onClick={this.handleViewInstructions.bind(this, dispatch, lessons.lessons, lessons.currentLessonIndex)}>
               View Instructions
             </button>
           </div>
