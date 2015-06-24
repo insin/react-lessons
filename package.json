@@ -5,8 +5,8 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "babel-core": "^5.5.8",
-    "babel-eslint": "^3.1.17",
+    "babel-core": "^5.6.4",
+    "babel-eslint": "^3.1.18",
     "babel-loader": "^5.1.4",
     "css-loader": "^0.14.5",
     "eslint": "^0.23.0",
