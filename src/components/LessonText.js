@@ -27,8 +27,8 @@ var LessonText = React.createClass({
            options={{mode: 'markdown', lineWrapping: true}}
            value={step.text}
          />
-       : <div className="markdown-body">
-           <div dangerouslySetInnerHTML={{__html: marked(step.text)}}/>
+       : <div>
+           <div className="markdown-body" dangerouslySetInnerHTML={{__html: marked(step.text)}}/>
            {hasNext && <div className="LessonText__next">
              <button type="button" onClick={this.handleNext}>Next &raquo;</button>
            </div>}

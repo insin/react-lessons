@@ -9,6 +9,9 @@
 .LessonText .markdown-body {
   padding: .5em;
 }
+.LessonText .markdown-body > :first-child {
+  margin-top: 0 !important;
+}
 .LessonText__next {
   padding: 1em;
   text-align: right;
