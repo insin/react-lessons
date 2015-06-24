@@ -55,11 +55,17 @@ module.exports = function lessons(state, action) {
     case EXECUTE_CODE:
       return {...state, currentCode: action.code}
     case IMPORT_LESSONS:
-      return {
-        editing: false,
-        lessons: action.lessons,
-        currentLessonIndex: 0,
-        currentStepIndex: 0
+      if (Array.isArray(action.imported)) {
+        return {
+          lessons: action.imported,
+          currentLessonIndex: 0,
+          currentStepIndex: 0
+        }
+      }
+      else {
+        return update(state, {
+          lessons: {$push: [action.imported]}
+        })
       }
     case TOGGLE_EDITING:
       return {...state, editing: action.editing}

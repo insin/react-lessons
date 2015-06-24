@@ -22,7 +22,7 @@ module.exports = {
   deleteLesson: createAction(DELETE_LESSON),
   deleteStep: createAction(DELETE_STEP),
   executeCode: createAction(EXECUTE_CODE, 'code'),
-  importLessons: createAction(IMPORT_LESSONS, 'lessons'),
+  importLessons: createAction(IMPORT_LESSONS, 'imported'),
   selectLesson: createAction(SELECT_LESSON, 'lessonIndex'),
   selectStep: createAction(SELECT_STEP, 'stepIndex'),
   toggleEditing: createAction(TOGGLE_EDITING, 'editing'),

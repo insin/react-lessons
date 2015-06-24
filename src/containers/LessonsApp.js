@@ -8,6 +8,10 @@ var exportJSON = require('../utils/export-json')
 require('./LessonsApp.css')
 
 var LessonsApp = React.createClass({
+  handleExportLesson(lesson) {
+    exportJSON(lesson, `${lesson.name || 'react-lesson'}.json`)
+  },
+
   handleExportLessons(lessons) {
     exportJSON(lessons, 'react-lessons.json')
   },
@@ -51,8 +55,9 @@ var LessonsApp = React.createClass({
                      checked={lessons.editing}
                      onChange={(e) => actions.toggleEditing(e.target.checked)}/>
               {' '}
-              Edit Lessons
-            </label>{' | '}
+              Edit Mode
+            </label>
+            {' | Drop a lesson .json file here to import'}
             {lessons.editing && <span>{' | '}
               <button type="button" onClick={actions.addLesson}>Add Lesson</button>{' '}
               {lessons.lessons.length > 1 && <button type="button" onClick={actions.deleteLesson}>
@@ -64,11 +69,14 @@ var LessonsApp = React.createClass({
                 Delete Step
               </button>}
               {' | '}
+              <button type="button" onClick={this.handleExportLesson.bind(this, currentLesson)}>
+                Export Lesson
+              </button>
+              {' | '}
+              <button type="button" onClick={this.handleExportLessons.bind(this, lessons.lessons)}>
+                Export All
+              </button>
             </span>}
-            <button type="button" onClick={this.handleExportLessons.bind(this, lessons.lessons)}>
-              Export
-            </button>
-            {' | Drop a lesson .json file here to import'}
           </div>
           <Lessons {...lessons} {...{currentLesson, currentStep}} actions={actions}/>
         </div>
