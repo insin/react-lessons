@@ -12,7 +12,9 @@ var LessonText = React.createClass({
             this.props.lessonNumber !== nextProps.lessonNumber)
   },
   handleChange(text) {
-    this.props.updateStep({text})
+    if (text !== this.props.step.text) {
+      this.props.updateStep({text})
+    }
   },
   handleNext() {
     this.props.selectStep(this.props.currentStepIndex + 1)
