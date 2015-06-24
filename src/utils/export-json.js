@@ -2,7 +2,7 @@ var Base64 = require('base-64')
 
 function exportJSON(lessons, filename='export.json') {
   var json = JSON.stringify(lessons, null, 2)
-  var json64 = Base64.encode(json)
+  var json64 = Base64.encode(unescape(encodeURIComponent(json)))
   var a = document.createElement('a')
   if ('download' in a) {
     a.href = `data:text/json;base64,${json64}`
