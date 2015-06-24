@@ -20,7 +20,7 @@ var LessonsApp = React.createClass({
     var instructionsIndex = -1
     for (var i = 0; i < lessons.length; i++) {
       if (lessons[i].instructions) {
-        instructionsIndex = 1
+        instructionsIndex = i
         break
       }
     }
