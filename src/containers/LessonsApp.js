@@ -4,42 +4,9 @@ var {Connector} = require('redux/react')
 var Lessons = require('../components/Lessons')
 var LessonActions = require('../actions/LessonActions')
 var exportJSON = require('../utils/export-json')
+var instructionsLesson = require('../instructions-lesson')
 
 require('./LessonsApp.css')
-
-/*eslint-disable quotes */
-var INSTRUCTIONS_LESSON = {
-  "name": "React Lessons Instructions",
-  "instructions": true,
-  "steps": [
-    {
-      "text": "## React Lessons\n\nReact Lessons is a tool for creating - and taking - interactive [React](http://facebook.github.io/react/) tutorials.\n\nEach lesson can include one or more steps (numbered across the top-right of the page).\n\n### Lesson steps\n\nA lesson step consists of:\n\n* Text explaining the purpose of the step, providing learning material and\n  giving instructions for the piece of code that needs to be written using the\n  material introduced by the step.\n\n* An outline for code to be written to practice the step's material.\n\nClick the \"Next\" button below to proceed to the next step and try some coding.",
-      "code": "",
-      "solution": ""
-    },
-    {
-      "text": "## Writing JavaScript code\n\nJavaScript code can be written in the panel on the right, and executed by pressing\nShift+Enter or pressing the Execute button underneath.\n\nThe following variables are available for use in code:\n\n* `React` - the React library.\n* `output` - the DOM node for the output area below.\n\nCode is transformed with [Babel](http://babeljs.io) before being executed, so you can use:\n\n* [JSX](http://facebook.github.io/react/docs/jsx-in-depth.html) - the XML-like syntax React uses to make generating content in JavaScript more pleasant.\n* [ECMAScript 6 features](http://babeljs.io/docs/learn-es2015/#ecmascript-6-features)\n* [ECMAScript 7 proposals](http://babeljs.io/docs/usage/experimental/) experimentally supported by Babel.\n\n### Coding time!\n\nLet's do some coding practice to get started.\n\nModify the code on the right so the output reads \"Hello world!\" instead of \"Hello…\"\n\nIf you're stumped, click the \"Fix code\" button just above the coding area to\nview and run the solution.",
-      "code": "React.render(<h1>Hello&hellip;</h1>, output)",
-      "solution": "React.render(<h1>Hello world!</h1>, output)"
-    },
-    {
-      "text": "## Editing lessons\n\nToggle the \"Edit Mode\" checkbox on the top left to enter editing mode.\n\nIn editing mode, you can change the lesson name and edit the content of each step.\n\n### Step text\n\nStep text is written in [Markdown](http://daringfireball.net/projects/markdown/basics).\n\n### Step code & solution\n\nIn editing mode, \"Code\" and \"Solution\" tabs will appear in the coding area:\n\n* Code is what the user will see when they first open the step.\n* Solution (if provided) will allow use of the \"Fix code\" button to see a solution for the coding challenge.",
-      "code": "",
-      "solution": ""
-    },
-    {
-      "text": "## Creating and deleting lessons and steps\n\nIn editing mode, extra toolbar buttons are also displayed to allow you to add new lessons and steps, or to delete the current lesson or step.\n\nWhen you add more lessons to a tutorial, a menu will pop up on the left side of the page to allow you to navigate between them.\n\nClick \"Add Lesson\" now to give it a go.",
-      "code": "",
-      "solution": ""
-    },
-    {
-      "text": "## Exporting lessons\n\nWhen in editing mode, you can export the current lesson or the complete tutorial using the \"Export Lesson\" and \"Export All\" buttons above.\n\nThis will prompt you to download a `.json` file containing lesson definitions.\n\n## Importing lessons\n\nTo import a lesson or a set of lessons, drag it onto the toolbar above.\n\n**Warning:** if you import a set of lessons, they will replace everything you currently have - be careful with this when editing!",
-      "code": "",
-      "solution": ""
-    }
-  ]
-}
-/*eslint-enable quotes */
 
 var LessonsApp = React.createClass({
   handleExportLesson(lesson) {
@@ -60,7 +27,7 @@ var LessonsApp = React.createClass({
 
     // Only add the instructions lesson if it's not already there
     if (instructionsIndex === -1) {
-      dispatch(LessonActions.importLessons(INSTRUCTIONS_LESSON))
+      dispatch(LessonActions.importLessons(instructionsLesson))
       instructionsIndex = lessons.length
     }
 
