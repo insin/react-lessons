@@ -18,9 +18,9 @@ var LessonCode = React.createClass({
     }
   },
   componentWillReceiveProps(nextProps) {
-    if (this.props.editing != nextProps.editing ||
-        this.props.currentLessonIndex != nextProps.currentLessonIndex ||
-        this.props.currentStepIndex != nextProps.currentStepIndex) {
+    if (this.props.editing !== nextProps.editing ||
+        this.props.currentLessonIndex !== nextProps.currentLessonIndex ||
+        this.props.currentStepIndex !== nextProps.currentStepIndex) {
       this.setState({
         activeTab: 'code',
         code: nextProps.step.code
@@ -50,7 +50,7 @@ var LessonCode = React.createClass({
   render() {
     var {editing, step} = this.props
     var {activeTab} = this.state
-     return <div className="LessonCode">
+    return <div className="LessonCode">
       {editing && <div className="LessonCode__tabs">
         <div className={tabClassNames('code', activeTab)}
              onClick={this.handleChangeTab.bind(this, 'code')}>

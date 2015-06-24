@@ -7,6 +7,7 @@ var exportJSON = require('../utils/export-json')
 
 require('./LessonsApp.css')
 
+/*eslint-disable quotes */
 var INSTRUCTIONS_LESSON = {
   "name": "React Lessons Instructions",
   "instructions": true,
@@ -38,6 +39,7 @@ var INSTRUCTIONS_LESSON = {
     }
   ]
 }
+/*eslint-enable quotes */
 
 var LessonsApp = React.createClass({
   handleExportLesson(lesson) {

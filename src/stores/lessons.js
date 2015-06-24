@@ -62,11 +62,9 @@ module.exports = function lessons(state, action) {
           currentStepIndex: 0
         }
       }
-      else {
-        return update(state, {
-          lessons: {$push: [action.imported]}
-        })
-      }
+      return update(state, {
+        lessons: {$push: [action.imported]}
+      })
     case TOGGLE_EDITING:
       return {...state, editing: action.editing}
     case SELECT_LESSON:
