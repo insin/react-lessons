@@ -14,3 +14,9 @@ body {
   padding: .5em;
   margin-bottom: .5em;
 }
+.markdown-body {
+  padding: .5em;
+}
+.markdown-body > :first-child {
+  margin-top: 0 !important;
+}

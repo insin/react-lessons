@@ -43,7 +43,7 @@ var LessonOutput = React.createClass({
       {this.state.errorMessage && <div className="LessonOutput__error">
         {this.state.errorMessage}
       </div>}
-      <div ref="output"/>
+      <div ref="output" className="markdown-body"/>
     </div>
   }
 })
