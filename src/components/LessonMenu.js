@@ -16,7 +16,8 @@ var LessonMenu = React.createClass({
           'LessonMenu__lesson--active': isActive
         })
         return <a className={linkClassName}
-                  onClick={!isActive && this.handleSelectLesson.bind(this, index)}>
+                  onClick={!isActive && this.handleSelectLesson.bind(this, index)}
+                  title={lesson.name}>
           <div>
             <span className="LessonMenu__number">{index + 1}</span>
           </div>
