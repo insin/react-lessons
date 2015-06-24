@@ -6,12 +6,12 @@ require('./LessonHeader.css')
 var LessonHeader = React.createClass({
   render() {
     var {
-      currentStepIndex, editing, lesson, lessonNumber,
+      currentStepIndex, editing, lesson, lessonCount, lessonNumber, step,
       addStep, selectStep, updateLesson
     } = this.props
     return <div className="LessonHeader">
       <h2>
-        <span className="LessonHeader__number">{lessonNumber}.</span>
+        {lessonCount > 1 && <span className="LessonHeader__number">{lessonNumber}.</span>}
         <span className="LessonHeader__name">
           {editing
            ? <input value={lesson.name} onChange={e => updateLesson({name: e.target.value})}/>
@@ -32,7 +32,7 @@ var LessonHeader = React.createClass({
       </div>
       {!editing && <div className="LessonHeader__buttons">
         <button type="button">Reset</button>
-        <button type="button">Fix code</button>
+        <button type="button" disabled={!step.solution}>Fix code</button>
       </div>}
     </div>
   }
