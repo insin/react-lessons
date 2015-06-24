@@ -29,6 +29,10 @@ var Lesson = React.createClass({
     this.renderBoxxyContent()
   },
   componentWillReceiveProps(nextProps) {
+    if (this.props.currentLessonIndex !== nextProps.currentLessonIndex ||
+        this.props.currentStepIndex !== nextProps.currentStepIndex) {
+      this.boxxy.blocks.lesson.scrollTop = 0
+    }
     this.renderBoxxyContent(nextProps)
   },
   componentWillUnmount() {
