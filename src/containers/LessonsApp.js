@@ -17,8 +17,8 @@ var INSTRUCTIONS_LESSON = {
     },
     {
       "text": "## Writing JavaScript code\n\nJavaScript code can be written in the panel on the right, and executed by pressing\nShift+Enter or pressing the Execute button underneath.\n\nThe following variables are available for use in code:\n\n* `React` - the React library.\n* `output` - the DOM node for the output area below.\n\nCode is transformed with [Babel](http://babeljs.io) before being executed, so you can use:\n\n* [JSX](http://facebook.github.io/react/docs/jsx-in-depth.html) - the XML-like syntax React uses to make generating content in JavaScript more pleasant.\n* [ECMAScript 6 features](http://babeljs.io/docs/learn-es2015/#ecmascript-6-features)\n* [ECMAScript 7 proposals](http://babeljs.io/docs/usage/experimental/) experimentally supported by Babel.\n\n### Coding time!\n\nLet's do some coding practice to get started.\n\nModify the code on the right so the output reads \"Hello world!\" instead of \"Hello…\"\n\nIf you're stumped, click the \"Fix code\" button just above the coding area to\nview and run the solution.",
-      "code": "React.render(<h1>Hello world!</h1>, output)",
-      "solution": ""
+      "code": "React.render(<h1>Hello&hellip;</h1>, output)",
+      "solution": "React.render(<h1>Hello world!</h1>, output)"
     },
     {
       "text": "## Editing lessons\n\nToggle the \"Edit Mode\" checkbox on the top left to enter editing mode.\n\nIn editing mode, you can change the lesson name and edit the content of each step.\n\n### Step text\n\nStep text is written in [Markdown](http://daringfireball.net/projects/markdown/basics).\n\n### Step code & solution\n\nIn editing mode, \"Code\" and \"Solution\" tabs will appear in the coding area:\n\n* Code is what the user will see when they first open the step.\n* Solution (if provided) will allow use of the \"Fix code\" button to see a solution for the coding challenge.",
