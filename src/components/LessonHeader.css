@@ -31,11 +31,17 @@
   line-height: 1.9em;
   text-align: center;
   cursor: pointer;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin-right: .3em;
+  color: #444;
+}
+.LessonHeader__step:last-child {
+  margin-right: 0;
 }
 .LessonHeader__step--active {
   background-color: #333;
   color: #fff;
-  border-radius: 50%;
   cursor: default;
 }
 .LessonHeader__buttons {

@@ -8,6 +8,7 @@
   line-height: 1.7em;
   text-align: center;
   cursor: pointer;
+  margin-bottom: .5em;
 }
 .LessonMenu__lesson--active .LessonMenu__number {
   background-color: #333;
