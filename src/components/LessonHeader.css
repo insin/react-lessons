@@ -11,7 +11,7 @@
 }
 .LessonHeader__name {
   flex: 1;
-  padding: 0 .3em;
+  margin-left: .3em;
 }
 .LessonHeader input {
   font: inherit;
@@ -24,7 +24,8 @@
 .LessonHeader__steps {
   display: flex;
   align-items: stretch;
-  padding-right: .3em;
+  margin-left: .3em;
+  margin-right: .3em;
 }
 .LessonHeader__step {
   width: 2em;
@@ -41,4 +42,10 @@
 .LessonHeader__buttons {
   display: flex;
   align-items: stretch;
+}
+.LessonHeader__buttons button {
+  margin-right: .3em;
+}
+.LessonHeader__buttons button:last-child {
+  margin-right: 0;
 }

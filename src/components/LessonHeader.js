@@ -30,9 +30,10 @@ var LessonHeader = React.createClass({
           </a>
         })}
       </div>
-      <div className="LessonHeader__buttons">
+      {!editing && <div className="LessonHeader__buttons">
         <button type="button">Reset</button>
-      </div>
+        <button type="button">Fix code</button>
+      </div>}
     </div>
   }
 })
