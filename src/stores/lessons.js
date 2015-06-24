@@ -19,6 +19,8 @@ var defaultStep = {text: '', code: '', solution: ''}
 var defaultLesson = {name: '', steps: [{...defaultStep}]}
 
 module.exports = function lessons(state, action) {
+  var code
+
   switch (action.type) {
     case ADD_LESSON:
       return update(state, {
@@ -70,19 +72,21 @@ module.exports = function lessons(state, action) {
     case TOGGLE_EDITING:
       return {...state, editing: action.editing}
     case SELECT_LESSON:
+      code = state.lessons[action.lessonIndex].steps[0].code
       return {
         ...state,
-        code: state.lessons[action.lessonIndex].steps[0].code,
+        code,
         currentLessonIndex: action.lessonIndex,
         currentStepIndex: 0,
-        executedCode: ''
+        executedCode: code
       }
     case SELECT_STEP:
+      code = state.lessons[state.currentLessonIndex].steps[action.stepIndex].code
       return {
         ...state,
-        code: state.lessons[state.currentLessonIndex].steps[action.stepIndex].code,
+        code,
         currentStepIndex: action.stepIndex,
-        executedCode: ''
+        executedCode: code
       }
     case UPDATE_CODE:
       return {...state, code: action.code}
