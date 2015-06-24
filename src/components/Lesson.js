@@ -16,8 +16,8 @@ var Lesson = React.createClass({
           id: 'left',
           size: 50,
           children: [
-            'lesson',
-            'output'
+            {id: 'lesson', size: 60},
+            {id: 'output', size: 40}
           ]
         },
         {
