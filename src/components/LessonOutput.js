@@ -10,22 +10,22 @@ var LessonOutput = React.createClass({
     }
   },
   componentDidMount() {
-    this.executeCode()
-  },
-  componentWillReceiveProps(nextProps) {
-    if (this.props.code !== nextProps.code) {
-      this.executeCode(nextProps)
+    if (this.props.currentCode) {
+      this.executeCode(this.props.currentCode)
     }
   },
-  executeCode(props) {
-    props = props || this.props
+  componentWillReceiveProps(nextProps) {
+    if (this.props.currentCode !== nextProps.currentCode) {
+      this.executeCode(nextProps.currentCode)
+    }
+  },
+  executeCode(code) {
     var output = React.findDOMNode(this.refs.output)
     var errorMessage = ''
-    if (props.code) {
+    if (code) {
       try {
-        var code = babel.transform(props.code).code
         /*eslint-disable no-new-func */
-        var func = new Function('React', 'output', code)
+        var func = new Function('React', 'output', babel.transform(code).code)
         /*eslint-enable no-new-func */
         func.call(this, React, output)
       }
@@ -33,7 +33,7 @@ var LessonOutput = React.createClass({
         errorMessage = e.message
       }
     }
-    if (errorMessage || !props.code) {
+    if (errorMessage || !code) {
       React.unmountComponentAtNode(output)
     }
     this.setState({errorMessage})

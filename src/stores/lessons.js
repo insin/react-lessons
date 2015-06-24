@@ -70,9 +70,18 @@ module.exports = function lessons(state, action) {
     case TOGGLE_EDITING:
       return {...state, editing: action.editing}
     case SELECT_LESSON:
-      return {...state, currentLessonIndex: action.lessonIndex, currentStepIndex: 0}
+      return {
+        ...state,
+        currentLessonIndex: action.lessonIndex,
+        currentStepIndex: 0,
+        currentCode: ''
+      }
     case SELECT_STEP:
-      return {...state, currentStepIndex: action.stepIndex}
+      return {
+        ...state,
+        currentStepIndex: action.stepIndex,
+        currentCode: ''
+      }
     case UPDATE_LESSON:
       return update(state, {
         lessons: {
