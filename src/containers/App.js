@@ -14,9 +14,10 @@ var redux = createRedux(stores, {
         {text: '', code: '', solution: ''}
       ]
     }],
-    currentCode: '',
+    code: '',
     currentLessonIndex: 0,
     currentStepIndex: 0
+    executedCode: '',
   }
 })
 

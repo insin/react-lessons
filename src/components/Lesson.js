@@ -8,24 +8,26 @@ var LessonText = require('./LessonText')
 
 require('./Lesson.css')
 
+var BOXXY_CONFIG = {
+  columns: [
+    {
+      id: 'left',
+      size: 50,
+      children: [
+        {id: 'lesson', size: 60},
+        {id: 'output', size: 40}
+      ]
+    },
+    {
+      id: 'code',
+      size: 50
+    }
+  ]
+}
+
 var Lesson = React.createClass({
   componentDidMount() {
-    this.boxxy = new Boxxy(React.findDOMNode(this.refs.boxxy), {
-      columns: [
-        {
-          id: 'left',
-          size: 50,
-          children: [
-            {id: 'lesson', size: 60},
-            {id: 'output', size: 40}
-          ]
-        },
-        {
-          id: 'code',
-          size: 50
-        }
-      ]
-    })
+    this.boxxy = new Boxxy(React.findDOMNode(this.refs.boxxy), BOXXY_CONFIG)
     this.renderBoxxyContent()
   },
   componentWillReceiveProps(nextProps) {

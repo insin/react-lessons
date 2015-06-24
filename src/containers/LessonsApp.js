@@ -131,7 +131,10 @@ var LessonsApp = React.createClass({
               </button>
             </span>}
             {' | '}
-            <button type="button" onClick={this.handleViewInstructions.bind(this, dispatch, lessons.lessons, lessons.currentLessonIndex)}>
+            <button type="button"
+                    onClick={this.handleViewInstructions.bind(
+                      this, dispatch, lessons.lessons, lessons.currentLessonIndex
+                    )}>
               View Instructions
             </button>
           </div>

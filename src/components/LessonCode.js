@@ -13,8 +13,7 @@ function tabClassNames(tab, activeTab) {
 var LessonCode = React.createClass({
   getInitialState() {
     return {
-      activeTab: 'code',
-      code: this.props.step.code
+      activeTab: 'code'
     }
   },
   componentWillReceiveProps(nextProps) {
@@ -22,8 +21,7 @@ var LessonCode = React.createClass({
         this.props.currentLessonIndex !== nextProps.currentLessonIndex ||
         this.props.currentStepIndex !== nextProps.currentStepIndex) {
       this.setState({
-        activeTab: 'code',
-        code: nextProps.step.code
+        activeTab: 'code'
       })
     }
   },
@@ -33,12 +31,12 @@ var LessonCode = React.createClass({
   handleExecuteCode() {
     this.props.executeCode(this.props.editing
                            ? this.props.step[this.state.activeTab]
-                           : this.state.code)
+                           : this.props.code)
   },
   handleChange(code) {
     if (!this.props.editing) {
-      if (code !== this.state.code) {
-        this.setState({code})
+      if (code !== this.props.code) {
+        this.props.updateCode(code)
       }
     }
     else {
@@ -68,7 +66,7 @@ var LessonCode = React.createClass({
           lineNumbers: true,
           mode: 'javascript'
         }}
-        value={editing ? step[activeTab] : this.state.code}
+        value={editing ? step[activeTab] : this.props.code}
       />
       <div className="LessonCode__buttons">
         <button type="button" className="LessonCode__execute" onClick={this.handleExecuteCode}>

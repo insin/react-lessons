@@ -10,13 +10,13 @@ var LessonOutput = React.createClass({
     }
   },
   componentDidMount() {
-    if (this.props.currentCode) {
-      this.executeCode(this.props.currentCode)
+    if (this.props.executedCode) {
+      this.executeCode(this.props.executedCode)
     }
   },
   componentWillReceiveProps(nextProps) {
-    if (this.props.currentCode !== nextProps.currentCode) {
-      this.executeCode(nextProps.currentCode)
+    if (this.props.executedCode !== nextProps.executedCode) {
+      this.executeCode(nextProps.executedCode)
     }
   },
   executeCode(code) {

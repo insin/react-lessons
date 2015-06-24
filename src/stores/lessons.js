@@ -8,6 +8,7 @@ var {
   SELECT_LESSON,
   SELECT_STEP,
   TOGGLE_EDITING,
+  UPDATE_CODE,
   UPDATE_LESSON,
   UPDATE_STEP
 } = require('../ActionTypes')
@@ -33,27 +34,28 @@ module.exports = function lessons(state, action) {
       })
     // Assumption: you can only delete lessons when there is more than one
     case DELETE_LESSON:
-      return update(state, {
-        lessons: {$splice: [[state.currentLessonIndex, 1]]},
+      return {
+        ...state,
+        lessons: update(state.lessons, {$splice: [[state.currentLessonIndex, 1]]}),
         // If the last lesson is being deleted, we need to adjust the current index
-        currentLessonIndex: {$set: Math.min(state.currentLessonIndex, state.lessons.length - 2)}
-      })
+        currentLessonIndex: Math.min(state.currentLessonIndex, state.lessons.length - 2),
+        currentStepIndex: 0
+      }
     // Assumption: you can only delete lesson steps when there is more than one
     case DELETE_STEP:
-      return update(state, {
-        lessons: {
+      return {
+        ...state,
+        lessons: update(state.lessons, {
           [state.currentLessonIndex]: {
             steps: {$splice: [[state.currentStepIndex, 1]]}
           }
-        },
+        }),
         // If the last step is being deleted, we need to adjust the current index
-        currentStepIndex: {
-          $set: Math.min(state.currentStepIndex,
-                         state.lessons[state.currentLessonIndex].steps.length - 2)
-        }
-      })
+        currentStepIndex: Math.min(state.currentStepIndex,
+                                   state.lessons[state.currentLessonIndex].steps.length - 2)
+      }
     case EXECUTE_CODE:
-      return {...state, currentCode: action.code}
+      return {...state, executedCode: action.code}
     case IMPORT_LESSONS:
       if (Array.isArray(action.imported)) {
         return {
@@ -70,16 +72,20 @@ module.exports = function lessons(state, action) {
     case SELECT_LESSON:
       return {
         ...state,
+        code: state.lessons[action.lessonIndex].steps[0].code,
         currentLessonIndex: action.lessonIndex,
         currentStepIndex: 0,
-        currentCode: ''
+        executedCode: ''
       }
     case SELECT_STEP:
       return {
         ...state,
+        code: state.lessons[state.currentLessonIndex].steps[action.stepIndex].code,
         currentStepIndex: action.stepIndex,
-        currentCode: ''
+        executedCode: ''
       }
+    case UPDATE_CODE:
+      return {...state, code: action.code}
     case UPDATE_LESSON:
       return update(state, {
         lessons: {

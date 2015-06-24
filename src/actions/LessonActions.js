@@ -8,6 +8,7 @@ var {
   SELECT_LESSON,
   SELECT_STEP,
   TOGGLE_EDITING,
+  UPDATE_CODE,
   UPDATE_LESSON,
   UPDATE_STEP
 } = require('../ActionTypes')
@@ -26,6 +27,7 @@ module.exports = {
   selectLesson: createAction(SELECT_LESSON, 'lessonIndex'),
   selectStep: createAction(SELECT_STEP, 'stepIndex'),
   toggleEditing: createAction(TOGGLE_EDITING, 'editing'),
+  updateCode: createAction(UPDATE_CODE, 'code'),
   updateLesson: createAction(UPDATE_LESSON, 'update'),
   updateStep: createAction(UPDATE_STEP, 'update')
 }
