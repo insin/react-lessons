@@ -9,3 +9,10 @@
 .LessonText .markdown-body {
   padding: .5em;
 }
+.LessonText__next {
+  padding: 1em;
+  text-align: right;
+}
+.LessonText__next button {
+  font-size: 1.5em;
+}

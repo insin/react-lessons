@@ -6,19 +6,33 @@ require('./LessonText.css')
 
 var LessonText = React.createClass({
   shouldComponentUpdate(nextProps) {
-    return (this.props.text !== nextProps.text ||
-            this.props.editing !== nextProps.editing)
+    return (this.props.step.text !== nextProps.step.text ||
+            this.props.editing !== nextProps.editing ||
+            this.props.stepNumber !== nextProps.stepNumber ||
+            this.props.lessonNumber !== nextProps.lessonNumber)
+  },
+  handleChange(text) {
+    this.props.updateStep({text})
+  },
+  handleNext() {
+    this.props.selectStep(this.props.currentStepIndex + 1)
   },
   render() {
-    var {editing, text, updateStep} = this.props
+    var {editing, step, stepNumber, lesson} = this.props
+    var hasNext = stepNumber < lesson.steps.length
     return <div className="LessonText">
       {editing
        ? <CodeMirror
-           onChange={text => updateStep({text})}
+           onChange={this.handleChange}
            options={{mode: 'markdown', lineWrapping: true}}
-           value={text}
+           value={step.text}
          />
-       : <div className="markdown-body" dangerouslySetInnerHTML={{__html: marked(text)}}/>
+       : <div className="markdown-body">
+           <div dangerouslySetInnerHTML={{__html: marked(step.text)}}/>
+           {hasNext && <div className="LessonText__next">
+             <button type="button" onClick={this.handleNext}>Next &raquo;</button>
+           </div>}
+         </div>
       }
     </div>
   }
