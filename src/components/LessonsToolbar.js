@@ -67,10 +67,13 @@ var LessonsToolbar = React.createClass({
   },
 
   handleDeleteLesson() {
-    var {currentLessonIndex, lessons} = this.props
+    var {currentLessonIndex, currentStepIndex, lessons} = this.props
     this.props.actions.deleteLesson()
     if (currentLessonIndex === lessons.length - 1) {
       this.context.router.replaceWith(`/${currentLessonIndex - 1}/0`)
+    }
+    else if (currentStepIndex > 0) {
+      this.context.router.replaceWith(`/${currentLessonIndex}/0`)
     }
   },
 
