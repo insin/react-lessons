@@ -10,12 +10,20 @@ var parseJSONFile = require('../utils/parse-json-file')
 require('./LessonsApp.css')
 
 var LessonsApp = React.createClass({
+  componentWillMount() {
+    var {dispatch, params} = this.props
+    dispatch(LessonActions.selectLesson(Number(params.lesson)))
+    dispatch(LessonActions.selectStep(Number(params.step)))
+  },
+
   componentWillReceiveProps(nextProps) {
-    if (this.props.params.lesson !== nextProps.params.lesson) {
-      this.props.dispatch(LessonActions.selectLesson(Number(nextProps.params.lesson)))
+    var {dispatch, params} = this.props
+    var {params: nextParams} = nextProps
+    if (params.lesson !== nextParams.lesson) {
+      dispatch(LessonActions.selectLesson(Number(nextParams.lesson)))
     }
-    if (this.props.params.step !== nextProps.params.step) {
-      this.props.dispatch(LessonActions.selectStep(Number(nextProps.params.step)))
+    if (params.step !== nextParams.step) {
+      dispatch(LessonActions.selectStep(Number(nextParams.step)))
     }
   },
 
