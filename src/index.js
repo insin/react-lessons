@@ -11,4 +11,4 @@ var App = require('./containers/App')
 
 var history = new HashHistory()
 
-React.render(<App history={history}/>, document.getElementById('root'))
+React.render(<App history={history}/>, document.getElementById('app'))
