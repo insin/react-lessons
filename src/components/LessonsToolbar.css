@@ -3,3 +3,21 @@
   padding: .5em;
   margin-bottom: .5em;
 }
+.LessonsToolbar__file {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.LessonsToolbar__file > button {
+  z-index: 1;
+}
+.LessonsToolbar__file > input[type=file] {
+  opacity: 0;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

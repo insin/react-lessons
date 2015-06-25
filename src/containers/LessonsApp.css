@@ -1,13 +1,14 @@
 body {
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
-}
-#root {
+  margin: 0;
 }
 .LessonsApp {
   display: flex;
   align-items: stretch;
   flex-direction: column;
   height: 100%;
+  padding: 8px;
+  box-sizing: border-box;
 }
 .markdown-body {
   padding: .5em;

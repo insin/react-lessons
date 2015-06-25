@@ -5,6 +5,7 @@ var {connect} = require('redux/react')
 var LessonActions = require('../actions/LessonActions')
 var Lessons = require('../components/Lessons')
 var LessonsToolbar = require('../components/LessonsToolbar')
+var parseJSONFile = require('../utils/parse-json-file')
 
 require('./LessonsApp.css')
 
@@ -18,12 +19,31 @@ var LessonsApp = React.createClass({
     }
   },
 
+  handleDragOver(e) {
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'copy'
+  },
+
+  handleDrop(e) {
+    e.preventDefault()
+    if (!e.dataTransfer.files || !e.dataTransfer.files[0]) {
+      return
+    }
+    parseJSONFile(e.dataTransfer.files[0], (err, lessonData) => {
+      if (err) {
+        window.alert(`Unable to import lessons: ${e.message}.`)
+        return
+      }
+      this.props.dispatch(LessonActions.importLessons(lessonData))
+    })
+  },
+
   render() {
     var {lessons, dispatch} = this.props
     var actions = bindActionCreators(LessonActions, dispatch)
     var currentLesson = lessons.lessons[lessons.currentLessonIndex]
     var currentStep = currentLesson.steps[lessons.currentStepIndex]
-    return <div className="LessonsApp">
+    return <div className="LessonsApp" onDragOver={this.handleDragOver} onDrop={this.handleDrop}>
       <LessonsToolbar {...lessons} {...{currentLesson, currentStep}} actions={actions}/>
       <Lessons {...lessons} {...{currentLesson, currentStep}} actions={actions}/>
     </div>

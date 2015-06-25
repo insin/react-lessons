@@ -1,7 +1,8 @@
 var React = require('react')
 
-var exportJSON = require('../utils/export-json')
 var instructionsLesson = require('../instructions-lesson')
+var exportJSON = require('../utils/export-json')
+var parseJSONFile = require('../utils/parse-json-file')
 
 require('./LessonsToolbar.css')
 
@@ -41,29 +42,17 @@ var LessonsToolbar = React.createClass({
     }
   },
 
-  handleDragOver(e) {
-    e.preventDefault()
-    e.dataTransfer.dropEffect = 'copy'
-  },
-
-  handleDrop(e) {
-    e.preventDefault()
-
-    if (!e.dataTransfer.files || !e.dataTransfer.files[0]) {
+  handleFileChange(e) {
+    if (!e.target.files[0]) {
       return
     }
-
-    var reader = new window.FileReader()
-    reader.onload = (e) => {
-      var json = e.target.result
-      try {
-        this.props.actions.importLessons(JSON.parse(json))
+    parseJSONFile(e.target.files[0], (err, lessonData) => {
+      if (err) {
+        window.alert(`Unable to import lessons: ${e.message}.`)
+        return
       }
-      catch (e) {
-        window.alert('Unable to import lessons - invalid JSON?')
-      }
-    }
-    reader.readAsText(e.dataTransfer.files[0])
+      this.props.actions.importLessons(lessonData)
+    })
   },
 
   handleDeleteLesson() {
@@ -87,9 +76,7 @@ var LessonsToolbar = React.createClass({
 
   render() {
     var {actions, currentLesson, currentLessonIndex, dispatch, editing, lessons} = this.props
-    return <div className="LessonsToolbar"
-                onDragOver={this.handleDragOver}
-                onDrop={this.handleDrop.bind(this, actions.importLessons)}>
+    return <div className="LessonsToolbar">
       <label>
         <input type="checkbox"
                checked={editing}
@@ -97,9 +84,13 @@ var LessonsToolbar = React.createClass({
         {' '}
         Edit Mode
       </label>
-      {' | Drop a lesson .json file here to import'}
+      {' | '}
+      <span className="LessonsToolbar__file">
+        <button type="button">Import Lesson(s)</button>
+        <input type="file" onChange={this.handleFileChange} accept=".json"/>
+      </span>
       {editing && <span>{' | '}
-        <button type="button" onClick={actions.addLesson}>Add Lesson</button>{' '}
+        <button type="button" onClick={actions.addLesson}>Add Lesson</button>{' | '}
         {lessons.length > 1 && <button type="button" onClick={this.handleDeleteLesson}>
           Delete Lesson
         </button>}
