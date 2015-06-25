@@ -1,12 +1,12 @@
-## React Lessons
+# React Lessons
 
 React Lessons is a tool for creating - and taking - interactive [React](http://facebook.github.io/react/) tutorials, inspired by the [Ractive.js Tutorial](http://learn.ractivejs.org).
 
-| Using | Editing |
-|-------|---------|
-| ![Tutorial screenshot](screenshot-use.png) | ![Editing mode screenshot](screenshot-edit.png) |
+## Taking tutorials
 
 A tutorial consists of a number of lessons. Each lesson can include one or more steps (numbered across the top-right of the page).
+
+![Tutorial screenshot](screenshot-use.png)
 
 A lesson step consists of:
 
@@ -30,17 +30,19 @@ Code is transformed with [Babel](http://babeljs.io) before being executed, so yo
 * [ECMAScript 6 features](http://babeljs.io/docs/learn-es2015/#ecmascript-6-features)
 * [ECMAScript 7 proposals](http://babeljs.io/docs/usage/experimental/) experimentally supported by Babel.
 
-### Editing lessons
+## Editing tutorials
 
 Use the "Edit Mode" checkbox to toggle editing mode.
 
+![Editing mode screenshot](screenshot-edit.png)
+
 In editing mode, you can change the lesson name and edit the content of each step.
 
-#### Step prose
+### Step prose
 
 Step prose is written in [Markdown](http://daringfireball.net/projects/markdown/basics), with support for additional [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/) features.
 
-#### Step code & solution
+### Step code & solution
 
 In editing mode, "Code" and "Solution" tabs will appear in the coding area:
 
@@ -56,13 +58,13 @@ In editing mode, extra toolbar buttons are also displayed to allow you to add ne
 
 When you add more lessons to a tutorial, a menu will pop up on the left side of the page to allow you to navigate between them.
 
-### Exporting lessons and tutorials
+### Exporting
 
 You can export the current lesson using the "Export Lesson" button, or the complete tutorial using "Export Tutorial" button.
 
 You will be prompted to download a `.json` file containing exported data.
 
-### Importing lessons and tutorials
+### Importing
 
 To import a lesson or a tutorial, use the "Import Lesson(s)" button to select a `.json` file, or drag and drop a `.json` file anywhere on the page.
 
