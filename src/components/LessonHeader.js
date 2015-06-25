@@ -14,9 +14,6 @@ var LessonHeader = React.createClass({
   handleReset() {
     this.props.updateCode(this.props.step.code)
   },
-  handleSelectStep(index) {
-    this.props.selectStep(index)
-  },
   render() {
     var {currentLessonIndex, currentStepIndex, editing, lesson, lessonCount, lessonNumber, step} = this.props
     return <div className="LessonHeader">

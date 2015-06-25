@@ -28,9 +28,6 @@ var LessonText = React.createClass({
       this.props.updateStep({text})
     }
   },
-  handleNext() {
-    this.props.selectStep(this.props.currentStepIndex + 1)
-  },
   render() {
     var {currentLessonIndex, currentStepIndex, editing, step, stepNumber, lesson} = this.props
     var hasNext = stepNumber < lesson.steps.length

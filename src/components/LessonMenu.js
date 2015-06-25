@@ -5,9 +5,6 @@ var {Link} = require('react-router')
 require('./LessonMenu.css')
 
 var LessonMenu = React.createClass({
-  handleSelectLesson(index) {
-    this.props.selectLesson(index)
-  },
   render() {
     var {lessons, currentLessonIndex} = this.props
     return <div className="LessonMenu">
