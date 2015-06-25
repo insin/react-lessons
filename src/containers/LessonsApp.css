@@ -23,3 +23,8 @@ body {
 .markdown-body > :first-child {
   margin-top: 0 !important;
 }
+.ReactCodeMirror, .CodeMirror {
+  height: 100%;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 14px;
+}

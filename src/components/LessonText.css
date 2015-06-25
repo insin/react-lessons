@@ -1,11 +1,6 @@
 .LessonText {
   height: 100%;
 }
-.LessonText .ReactCodeMirror, .LessonText .CodeMirror {
-  height: 100%;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 14px;
-}
 .LessonText__next {
   padding: 1em;
   text-align: right;

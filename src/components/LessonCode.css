@@ -7,11 +7,6 @@
   flex: 1;
   overflow: hidden;
 }
-.LessonCode .CodeMirror {
-  height: 100%;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 14px;
-}
 .LessonCode__tabs {
   position: relative;
   background-color: #f7f7f7;
