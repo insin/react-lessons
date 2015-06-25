@@ -84,6 +84,7 @@ var LessonsToolbar = React.createClass({
     var instructionsIndex = findInstructionsIndex(lessons)
     var showViewInstructions = instructionsIndex === -1 || instructionsIndex !== currentLessonIndex
     return <div className="LessonsToolbar">
+      <a style={{float: 'right'}} href="https://github.com/insin/react-lessons">Fork me on GitHub</a>
       <label>
         <input type="checkbox"
                checked={editing}
