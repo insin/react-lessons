@@ -64,7 +64,9 @@ var LessonCode = React.createClass({
         options={{
           extraKeys: {'Shift-Enter': this.handleExecuteCode},
           lineNumbers: true,
-          mode: 'javascript'
+          mode: 'javascript',
+          smartIndent: false,
+          tabSize: 2
         }}
         value={editing ? step[activeTab] : this.props.code}
       />
