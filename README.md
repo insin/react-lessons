@@ -2,6 +2,10 @@
 
 React Lessons is a tool for creating - and taking - interactive [React](http://facebook.github.io/react/) tutorials, inspired by the [Ractive.js Tutorial](http://learn.ractivejs.org).
 
+| Using | Editing |
+|-------|---------|
+| ![Tutorial screenshot](screenshot-use.png) | ![Editing mode screenshot](screenshot-edit.png) |
+
 A tutorial consists of a number of lessons. Each lesson can include one or more steps (numbered across the top-right of the page).
 
 A lesson step consists of:
