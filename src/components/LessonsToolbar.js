@@ -6,6 +6,17 @@ var parseJSONFile = require('../utils/parse-json-file')
 
 require('./LessonsToolbar.css')
 
+function findInstructionsIndex(lessons) {
+  var instructionsIndex = -1
+  for (var i = 0; i < lessons.length; i++) {
+    if (lessons[i].instructions) {
+      instructionsIndex = i
+      break
+    }
+  }
+  return instructionsIndex
+}
+
 var LessonsToolbar = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -21,20 +32,14 @@ var LessonsToolbar = React.createClass({
 
   handleViewInstructions() {
     var {actions, lessons, currentLessonIndex} = this.props
+    var instructionsIndex = findInstructionsIndex(lessons)
 
-    // Check if the instructions are already being displayed as a lesson
-    var instructionsIndex = -1
-    for (var i = 0; i < lessons.length; i++) {
-      if (lessons[i].instructions) {
-        instructionsIndex = i
-        break
-      }
-    }
     // Only add the instructions lesson if it's not already there
     if (instructionsIndex === -1) {
       actions.importLessons(instructionsLesson)
       instructionsIndex = lessons.length
     }
+
     // Only select the instructions lesson if we're not already doing so, as it
     // will switch back to the first step if already selected.
     if (instructionsIndex !== currentLessonIndex) {
@@ -76,6 +81,8 @@ var LessonsToolbar = React.createClass({
 
   render() {
     var {actions, currentLesson, currentLessonIndex, dispatch, editing, lessons} = this.props
+    var instructionsIndex = findInstructionsIndex(lessons)
+    var showViewInstructions = instructionsIndex === -1 || instructionsIndex !== currentLessonIndex
     return <div className="LessonsToolbar">
       <label>
         <input type="checkbox"
@@ -107,13 +114,14 @@ var LessonsToolbar = React.createClass({
         </button>
         {' | '}
         <button type="button" onClick={this.handleExportLessons.bind(this, lessons)}>
-          Export All
+          Export Tutorial
         </button>
       </span>}
-      {' | '}
-      <button type="button" onClick={this.handleViewInstructions}>
-        View Instructions
-      </button>
+      {showViewInstructions && <span>{' | '}
+        <button type="button" onClick={this.handleViewInstructions}>
+          View Instructions
+        </button>
+      </span>}
     </div>
   }
 })
