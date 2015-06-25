@@ -23,7 +23,7 @@
       "solution": ""
     },
     {
-      "text": "## Exporting lessons and tutorials\n\nYou can export the current lesson using the \"Export Lesson\" button, or the complete tutorial using \"Export Tutorial\" button.\n\nYou will be prompted to download a `.json` file containing exported data.\n\n## Importing lessons and tutorials\n\nTo import a lesson or a tutorial, use the \"Import Lesson(s)\" button to select a `.json` file, or drag and drop a `.json` file anywhere on the page.\n\n**Warning:** if you import a tutorial, its lessons will replace *everything* you currently have.",
+      "text": "## Exporting lessons and tutorials\n\nYou can export the current lesson using the \"Export Lesson\" button, or the complete tutorial using the \"Export Tutorial\" button.\n\nYou will be prompted to download a `.json` file containing exported data.\n\n## Importing lessons and tutorials\n\nTo import a lesson or a tutorial, use the \"Import Lesson(s)\" button to select a `.json` file, or drag and drop a `.json` file anywhere on the page.\n\n**Warning:** if you import a tutorial, its lessons will replace *everything* you currently have.",
       "code": "",
       "solution": ""
     }

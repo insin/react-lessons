@@ -60,7 +60,7 @@ When you add more lessons to a tutorial, a menu will pop up on the left side of 
 
 ### Exporting
 
-You can export the current lesson using the "Export Lesson" button, or the complete tutorial using "Export Tutorial" button.
+You can export the current lesson using the "Export Lesson" button, or the complete tutorial using the "Export Tutorial" button.
 
 You will be prompted to download a `.json` file containing exported data.
 
