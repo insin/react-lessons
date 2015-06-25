@@ -1,12 +1,11 @@
 'use strict'
 
-var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var webpack = require('webpack')
 
-var plugins =
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: './src/index',
     vendor: [
       'babel-core/browser',
       'base-64',
@@ -48,7 +47,7 @@ module.exports = {
     loaders: [
       {test: /\.js$/, loader: 'babel', exclude: /node_modules/},
       {test: /\.json$/, loader: 'json'},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')}
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader')}
     ]
   }
 }

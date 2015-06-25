@@ -1,4 +1,6 @@
-var path = require('path')
+'use strict'
+
+var path =require('path')
 var webpack = require('webpack')
 
 module.exports = {
@@ -21,22 +23,10 @@ module.exports = {
     extensions: ['', '.js', '.json']
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
-    }, {
-      test: /\.json$/,
-      loaders: ['json'],
-      include: path.join(__dirname, 'src')
-    }, {
-      test: /\.css$/,
-      loaders: ['style', 'css'],
-      include: [
-        path.join(__dirname, 'src'),
-        path.join(__dirname, 'node_modules/codemirror/lib'),
-        path.join(__dirname, 'node_modules/github-markdown-css')
-      ]
-    }]
+    loaders: [
+      {test: /\.js$/, loader: 'react-hot!babel', include: path.join(__dirname, 'src')},
+      {test: /\.json$/, loader: 'json'},
+      {test: /\.css$/, loader: 'style!css!autoprefixer'}
+    ]
   }
 }
