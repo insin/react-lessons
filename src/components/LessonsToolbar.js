@@ -23,11 +23,11 @@ var LessonsToolbar = React.createClass({
   },
 
   handleExportLesson(lesson) {
-    exportJSON(lesson, `${lesson.name || 'react-lesson'}.json`)
+    exportJSON(lesson, lesson.name ? `${lesson.name}.lesson.json` : 'lesson.json')
   },
 
-  handleExportLessons(lessons) {
-    exportJSON(lessons, 'react-lessons.json')
+  handleExportTutorial(lessons) {
+    exportJSON(lessons, 'react-lessons.tutorial.json')
   },
 
   handleViewInstructions() {
@@ -97,6 +97,14 @@ var LessonsToolbar = React.createClass({
         <button type="button">Import Lesson(s)</button>
         <input type="file" onChange={this.handleFileChange} accept=".json"/>
       </span>
+      {' | '}
+      <button type="button" onClick={this.handleExportLesson.bind(this, currentLesson)}>
+        Export Lesson
+      </button>
+      {' | '}
+      <button type="button" onClick={this.handleExportTutorial.bind(this, lessons)}>
+        Export Tutorial
+      </button>
       {editing && <span>{' | '}
         <button type="button" onClick={actions.addLesson}>Add Lesson</button>{' | '}
         {lessons.length > 1 && <button type="button" onClick={this.handleDeleteLesson}>
@@ -109,14 +117,6 @@ var LessonsToolbar = React.createClass({
             Delete Step
           </button>
         </span>}
-        {' | '}
-        <button type="button" onClick={this.handleExportLesson.bind(this, currentLesson)}>
-          Export Lesson
-        </button>
-        {' | '}
-        <button type="button" onClick={this.handleExportLessons.bind(this, lessons)}>
-          Export Tutorial
-        </button>
       </span>}
       {showViewInstructions && <span>{' | '}
         <button type="button" onClick={this.handleViewInstructions}>
