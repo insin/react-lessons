@@ -14,8 +14,8 @@ var BOXXY_CONFIG = {
       id: 'left',
       size: 50,
       children: [
-        {id: 'lesson', size: 60},
-        {id: 'output', size: 40}
+        {id: 'lesson', size: 65},
+        {id: 'output', size: 35}
       ]
     },
     {
