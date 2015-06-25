@@ -13,6 +13,7 @@ var LessonHeader = React.createClass({
   },
   handleReset() {
     this.props.updateCode(this.props.step.code)
+    this.props.executeCode(this.props.step.code)
   },
   render() {
     var {currentLessonIndex, currentStepIndex, editing, lesson, lessonCount, lessonNumber, step} = this.props
@@ -21,7 +22,7 @@ var LessonHeader = React.createClass({
         {lessonCount > 1 && <span className="LessonHeader__number">{lessonNumber}.</span>}
         <span className="LessonHeader__name">
           {editing
-           ? <input value={lesson.name} onChange={this.handleChange}/>
+           ? <input value={lesson.name} onChange={this.handleChange} placeholder="Lesson name"/>
            : lesson.name
           }
         </span>
