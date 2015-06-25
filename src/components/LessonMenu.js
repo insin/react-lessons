@@ -1,5 +1,6 @@
 var classNames = require('classnames')
 var React = require('react')
+var {Link} = require('react-router')
 
 require('./LessonMenu.css')
 
@@ -10,19 +11,16 @@ var LessonMenu = React.createClass({
   render() {
     var {lessons, currentLessonIndex} = this.props
     return <div className="LessonMenu">
-      {lessons.map((lesson, index) => {
-        var isActive = index === currentLessonIndex
-        var linkClassName = classNames('LessonMenu__lesson', {
-          'LessonMenu__lesson--active': isActive
-        })
-        return <a className={linkClassName}
-                  onClick={!isActive && this.handleSelectLesson.bind(this, index)}
-                  title={lesson.name}>
+      {lessons.map((lesson, index) =>
+        <Link to={`/${index}/0`}
+              className={classNames('LessonMenu__lesson', {
+                'LessonMenu__lesson--active': index === currentLessonIndex
+              })}>
           <div>
             <span className="LessonMenu__number">{index + 1}</span>
           </div>
-        </a>
-      })}
+        </Link>
+      )}
     </div>
   }
 })

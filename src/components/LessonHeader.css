@@ -35,6 +35,7 @@
   background-color: #ddd;
   margin-right: .3em;
   color: #444;
+  text-decoration: none;
 }
 .LessonHeader__step:last-child {
   margin-right: 0;

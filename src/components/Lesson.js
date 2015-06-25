@@ -26,6 +26,13 @@ var BOXXY_CONFIG = {
 }
 
 var Lesson = React.createClass({
+  // Lesson contents are being independently rendered into DOM elements managed
+  // by Boxxy (a.k.a. portals). This breaks the context chain between these
+  // portal-rendered components. As such, we must grab anything needed by these
+  // components out of context and pass it manually.
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   componentDidMount() {
     this.boxxy = new Boxxy(React.findDOMNode(this.refs.boxxy), BOXXY_CONFIG)
     this.renderBoxxyContent()
@@ -52,7 +59,7 @@ var Lesson = React.createClass({
   renderBoxxyContent(props) {
     props = props || this.props
     var {lesson, output, code} = this.boxxy.blocks
-    React.render(<LessonText {...props}/>, lesson)
+    React.render(<LessonText {...props} router={this.context.router}/>, lesson)
     React.render(<LessonOutput {...props}/>, output)
     React.render(<LessonCode {...props}/>, code)
   }

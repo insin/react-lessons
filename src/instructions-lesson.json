@@ -3,7 +3,7 @@
   "instructions": true,
   "steps": [
     {
-      "text": "## React Lessons\n\nReact Lessons is a tool for creating - and taking - interactive [React](http://facebook.github.io/react/) tutorials, inspired by the [Ractive.js Tutorial](http://learn.ractivejs.org).\n\nEach lesson can include one or more steps (numbered across the top-right of the page).\n\n### Lesson steps\n\nA lesson step consists of:\n\n* Text explaining the purpose of the step, providing learning material and\n  giving instructions for the piece of code that needs to be written using the\n  material introduced by the step.\n\n* An outline for code to be written to practice the step's material.\n\nClick the \"Next\" button below to proceed to the next step and try some coding.",
+      "text": "## React Lessons\n\nReact Lessons is a tool for creating - and taking - interactive [React](http://facebook.github.io/react/) tutorials, inspired by the [Ractive.js Tutorial](http://learn.ractivejs.org).\n\nEach lesson can include one or more steps (numbered across the top-right of the page).\n\n### Lesson steps\n\nA lesson step consists of:\n\n* Text explaining the purpose of the step, providing learning material and\n  giving instructions for the piece of code that needs to be written using the\n  material introduced by the step.\n\n* An outline for code to be written to practice the step's material.\n\nClick the \"next\" link below to proceed to the next step and try some coding.",
       "code": "",
       "solution": ""
     },

@@ -1,5 +1,6 @@
 var classNames = require('classnames')
 var React = require('react')
+var {Link} = require('react-router')
 
 require('./LessonHeader.css')
 
@@ -18,7 +19,7 @@ var LessonHeader = React.createClass({
     this.props.selectStep(index)
   },
   render() {
-    var {currentStepIndex, editing, lesson, lessonCount, lessonNumber, step} = this.props
+    var {currentLessonIndex, currentStepIndex, editing, lesson, lessonCount, lessonNumber, step} = this.props
     return <div className="LessonHeader">
       <h2>
         {lessonCount > 1 && <span className="LessonHeader__number">{lessonNumber}.</span>}
@@ -30,15 +31,13 @@ var LessonHeader = React.createClass({
         </span>
       </h2>
       <div className="LessonHeader__steps">
-        {lesson.steps.map((step, index) => {
-          var isActive = index === currentStepIndex
-          var className = classNames('LessonHeader__step', {
-            'LessonHeader__step--active': isActive
-          })
-          return <a className={className} onClick={!isActive && this.handleSelectStep.bind(this, index)}>
+        {lesson.steps.map((step, index) =>
+          <Link to={`/${currentLessonIndex}/${index}`}
+                className="LessonHeader__step"
+                activeClassName="LessonHeader__step--active">
             {index + 1}
-          </a>
-        })}
+          </Link>
+        )}
       </div>
       {!editing && <div className="LessonHeader__buttons">
         <button type="button" onClick={this.handleReset}>Reset</button>

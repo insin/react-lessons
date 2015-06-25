@@ -41,6 +41,7 @@
     "marked": "^0.3.3",
     "react": "^0.13.3",
     "react-codemirror": "^0.1.2",
+    "react-router": "^1.0.0-beta2",
     "redux": "^0.12.0"
   },
   "license": "MIT"

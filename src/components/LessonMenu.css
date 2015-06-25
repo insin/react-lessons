@@ -1,6 +1,10 @@
 .LessonMenu {
   padding-right: .5em;
 }
+.LessonMenu__lesson {
+  color: #444;
+  text-decoration: none;
+}
 .LessonMenu__number {
   display: block;
   width: 1.6em;

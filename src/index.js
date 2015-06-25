@@ -6,6 +6,9 @@ require('codemirror/mode/javascript/javascript')
 require('codemirror/mode/markdown/markdown')
 
 var React = require('react')
+var HashHistory = require('react-router/lib/HashHistory')
 var App = require('./containers/App')
 
-React.render(<App/>, document.getElementById('root'))
+var history = new HashHistory()
+
+React.render(<App history={history}/>, document.getElementById('root'))
