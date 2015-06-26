@@ -6,3 +6,11 @@
   text-align: right;
   font-size: 1.5em;
 }
+.LessonText__next a {
+  color: #4078C0;
+  text-decoration: none;
+}
+.LessonText__next a:hover {
+  outline: 0px none;
+  text-decoration: underline;
+}

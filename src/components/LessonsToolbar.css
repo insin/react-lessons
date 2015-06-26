@@ -21,3 +21,12 @@
   right: 0;
   bottom: 0;
 }
+.LessonsToolbar a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+.LessonsToolbar a:hover {
+  color: #4078C0;
+  outline: 0px none;
+}
