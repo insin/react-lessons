@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "webpack --config=webpack.build.config.js",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "start": "node server.js"
   },
   "devDependencies": {
