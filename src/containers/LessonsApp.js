@@ -39,7 +39,7 @@ var LessonsApp = React.createClass({
     }
     parseJSONFile(e.dataTransfer.files[0], (err, lessonData) => {
       if (err) {
-        window.alert(`Unable to import lessons: ${e.message}.`)
+        window.alert(`Unable to import lessons: ${err.message}.`)
         return
       }
       this.props.dispatch(LessonActions.importLessons(lessonData))

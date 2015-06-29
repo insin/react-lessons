@@ -53,7 +53,7 @@ var LessonsToolbar = React.createClass({
     }
     parseJSONFile(e.target.files[0], (err, lessonData) => {
       if (err) {
-        window.alert(`Unable to import lessons: ${e.message}.`)
+        window.alert(`Unable to import lessons: ${err.message}.`)
         return
       }
       this.props.actions.importLessons(lessonData)
