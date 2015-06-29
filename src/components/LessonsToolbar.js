@@ -63,7 +63,7 @@ var LessonsToolbar = React.createClass({
   handleAddLesson() {
     var {lessons} = this.props
     this.props.actions.addLesson()
-    this.context.router.replaceWith(`/${lessons.length}/0`)
+    this.context.router.transitionTo(`/${lessons.length}/0`)
   },
 
   handleDeleteLesson() {
@@ -80,7 +80,7 @@ var LessonsToolbar = React.createClass({
   handleAddStep() {
     var {currentLesson, currentLessonIndex, lessons} = this.props
     this.props.actions.addStep()
-    this.context.router.replaceWith(`/${currentLessonIndex}/${currentLesson.steps.length}`)
+    this.context.router.transitionTo(`/${currentLessonIndex}/${currentLesson.steps.length}`)
   },
 
   handleDeleteStep() {
