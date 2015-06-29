@@ -1,3 +1,5 @@
+var update = require('react/lib/update')
+
 var {
   ADD_LESSON,
   ADD_STEP,
@@ -12,11 +14,16 @@ var {
   UPDATE_LESSON,
   UPDATE_STEP
 } = require('../ActionTypes')
+var uuid = require('../utils/uuid')
 
-var update = require('react/lib/update')
+function createStep() {
+  return {id: uuid(), text: '', code: '', solution: ''}
+}
 
-var defaultStep = {text: '', code: '', solution: ''}
-var defaultLesson = {name: '', steps: [{...defaultStep}]}
+function createLesson() {
+  return {id: uuid(), name: '', steps: [createStep()]}
+}
+
 
 module.exports = function lessons(state, action) {
   var code
@@ -25,7 +32,7 @@ module.exports = function lessons(state, action) {
     case ADD_LESSON:
       return {
         ...state,
-        lessons: update(state.lessons, {$push: [{...defaultLesson}]}),
+        lessons: update(state.lessons, {$push: [createLesson()]}),
         currentLessonIndex: state.lessons.length,
         currentStepIndex: 0
       }
@@ -34,7 +41,7 @@ module.exports = function lessons(state, action) {
         ...state,
         lessons: update(state.lessons, {
           [state.currentLessonIndex]: {
-            steps: {$push: [{...defaultStep}]}
+            steps: {$push: [createStep()]}
           }
         }),
         currentStepIndex: state.lessons[state.currentLessonIndex].steps.length
