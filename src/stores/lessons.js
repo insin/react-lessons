@@ -23,17 +23,22 @@ module.exports = function lessons(state, action) {
 
   switch (action.type) {
     case ADD_LESSON:
-      return update(state, {
-        lessons: {$push: [{...defaultLesson}]}
-      })
+      return {
+        ...state,
+        lessons: update(state.lessons, {$push: [{...defaultLesson}]}),
+        currentLessonIndex: state.lessons.length,
+        currentStepIndex: 0
+      }
     case ADD_STEP:
-      return update(state, {
-        lessons: {
+      return {
+        ...state,
+        lessons: update(state.lessons, {
           [state.currentLessonIndex]: {
             steps: {$push: [{...defaultStep}]}
           }
-        }
-      })
+        }),
+        currentStepIndex: state.lessons[state.currentLessonIndex].steps.length
+      }
     // Assumption: you can only delete lessons when there is more than one
     case DELETE_LESSON:
       return {

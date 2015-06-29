@@ -60,6 +60,12 @@ var LessonsToolbar = React.createClass({
     })
   },
 
+  handleAddLesson() {
+    var {lessons} = this.props
+    this.props.actions.addLesson()
+    this.context.router.replaceWith(`/${lessons.length}/0`)
+  },
+
   handleDeleteLesson() {
     var {currentLessonIndex, currentStepIndex, lessons} = this.props
     this.props.actions.deleteLesson()
@@ -69,6 +75,12 @@ var LessonsToolbar = React.createClass({
     else if (currentStepIndex > 0) {
       this.context.router.replaceWith(`/${currentLessonIndex}/0`)
     }
+  },
+
+  handleAddStep() {
+    var {currentLesson, currentLessonIndex, lessons} = this.props
+    this.props.actions.addStep()
+    this.context.router.replaceWith(`/${currentLessonIndex}/${currentLesson.steps.length}`)
   },
 
   handleDeleteStep() {
@@ -106,12 +118,12 @@ var LessonsToolbar = React.createClass({
         Export Tutorial
       </button>
       {editing && <span>{' | '}
-        <button type="button" onClick={actions.addLesson}>Add Lesson</button>{' | '}
+        <button type="button" onClick={this.handleAddLesson}>Add Lesson</button>{' | '}
         {lessons.length > 1 && <button type="button" onClick={this.handleDeleteLesson}>
           Delete Lesson
         </button>}
         {' | '}
-        <button type="button" onClick={actions.addStep}>Add Step</button>{' '}
+        <button type="button" onClick={this.handleAddStep}>Add Step</button>{' '}
         {currentLesson.steps.length > 1 && <span>{' | '}
           <button type="button" onClick={this.handleDeleteStep}>
             Delete Step
