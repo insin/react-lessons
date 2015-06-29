@@ -1,3 +1,4 @@
+var classNames = require('classnames')
 var React = require('react')
 var {Link} = require('react-router')
 
@@ -30,8 +31,9 @@ var LessonHeader = React.createClass({
       <div className="LessonHeader__steps">
         {lesson.steps.map((step, index) =>
           <Link to={`/${currentLessonIndex}/${index}`}
-                className="LessonHeader__step"
-                activeClassName="LessonHeader__step--active">
+                className={classNames('LessonHeader__step', {
+                  'LessonHeader__step--active': index === currentStepIndex
+                })}>
             {index + 1}
           </Link>
         )}
