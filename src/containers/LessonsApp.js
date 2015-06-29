@@ -10,6 +10,10 @@ var parseJSONFile = require('../utils/parse-json-file')
 require('./LessonsApp.css')
 
 var LessonsApp = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
   componentWillMount() {
     var {dispatch, params} = this.props
     dispatch(LessonActions.selectLesson(Number(params.lesson)))
@@ -42,7 +46,15 @@ var LessonsApp = React.createClass({
         window.alert(`Unable to import lessons: ${err.message}.`)
         return
       }
-      this.props.dispatch(LessonActions.importLessons(lessonData))
+      var {dispatch, lessons} = this.props
+      var {router} = this.context
+      dispatch(LessonActions.importLessons(lessonData))
+      if (Array.isArray(lessonData)) {
+        router.replaceWith('/0/0')
+      }
+      else {
+        router.transitionTo(`/${lessons.lessons.length}/0`)
+      }
     })
   },
 

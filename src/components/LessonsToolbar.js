@@ -56,7 +56,15 @@ var LessonsToolbar = React.createClass({
         window.alert(`Unable to import lessons: ${err.message}.`)
         return
       }
+      var {lessons} = this.props
+      var {router} = this.context
       this.props.actions.importLessons(lessonData)
+      if (Array.isArray(lessonData)) {
+        router.replaceWith('/0/0')
+      }
+      else {
+        router.transitionTo(`/${lessons.length}/0`)
+      }
     })
   },
 
