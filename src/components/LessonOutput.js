@@ -3,6 +3,8 @@ var babel = require('babel-core/browser')
 
 require('./LessonOutput.css')
 
+var BABEL_OPTIONS = {stage: 0}
+
 var LessonOutput = React.createClass({
   getInitialState() {
     return {
@@ -28,7 +30,7 @@ var LessonOutput = React.createClass({
     if (code) {
       try {
         /*eslint-disable no-new-func */
-        var func = new Function('React', 'output', babel.transform(code).code)
+        var func = new Function('React', 'output', babel.transform(code, BABEL_OPTIONS).code)
         /*eslint-enable no-new-func */
         func.call(this, React, output)
       }
