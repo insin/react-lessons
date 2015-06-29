@@ -21,6 +21,9 @@ var LessonOutput = React.createClass({
   },
   executeCode(code) {
     var output = React.findDOMNode(this.refs.output)
+    if (!React.unmountComponentAtNode(output)) {
+      output.innerHTML = ''
+    }
     var errorMessage = ''
     if (code) {
       try {
@@ -31,10 +34,8 @@ var LessonOutput = React.createClass({
       }
       catch (e) {
         errorMessage = e.message
+        React.unmountComponentAtNode(output)
       }
-    }
-    if (errorMessage || !code) {
-      React.unmountComponentAtNode(output)
     }
     this.setState({errorMessage})
   },
