@@ -66,6 +66,7 @@ module.exports = function lessons(state, action) {
     case IMPORT_LESSONS:
       if (Array.isArray(action.imported)) {
         return {
+          ...state,
           lessons: action.imported,
           currentLessonIndex: 0,
           currentStepIndex: 0
