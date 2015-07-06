@@ -24,8 +24,16 @@ function createLesson() {
   return {id: uuid(), name: '', steps: [createStep()]}
 }
 
+var defaultState = {
+  code: '',
+  currentLessonIndex: 0,
+  currentStepIndex: 0,
+  editing: true,
+  executedCode: '',
+  lessons: [createLesson()]
+}
 
-module.exports = function lessons(state, action) {
+module.exports = function lessons(state=defaultState, action) {
   var code
 
   switch (action.type) {

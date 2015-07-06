@@ -5,18 +5,8 @@ var {Provider} = require('redux/react')
 
 var LessonsApp = require('./LessonsApp')
 var stores = require('../stores/index')
-var instructionsLesson = require('../instructions-lesson')
 
-var redux = createRedux(stores, {
-  lessons: {
-    code: '',
-    currentLessonIndex: 0,
-    currentStepIndex: 0,
-    editing: false,
-    executedCode: '',
-    lessons: [instructionsLesson]
-  }
-})
+var redux = createRedux(stores)
 
 var App = React.createClass({
   render() {
