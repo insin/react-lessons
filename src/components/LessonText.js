@@ -29,8 +29,9 @@ var LessonText = React.createClass({
     }
   },
   render() {
-    var {currentLessonIndex, currentStepIndex, editing, step, stepNumber, lesson} = this.props
-    var hasNext = stepNumber < lesson.steps.length
+    var {currentLessonIndex, currentStepIndex, editing, step, stepNumber, lesson, lessonNumber, lessons} = this.props
+    var hasNextStep = stepNumber < lesson.steps.length
+    var hasNextLesson = stepNumber === lesson.steps.length && lessonNumber < lessons.length
     return <div className="LessonText">
       {editing
        ? <CodeMirror
@@ -40,9 +41,14 @@ var LessonText = React.createClass({
          />
        : <div>
            <div className="markdown-body" dangerouslySetInnerHTML={{__html: marked(step.text)}}/>
-           {hasNext && <div className="LessonText__next">
+           {hasNextStep && <div className="LessonText__next">
              <Link to={`/${currentLessonIndex}/${currentStepIndex + 1}`}>
                next &raquo;
+             </Link>
+           </div>}
+           {hasNextLesson && !!step.text && <div className="LessonText__next">
+             <Link to={`/${currentLessonIndex + 1}/0`}>
+               next lesson &raquo;
              </Link>
            </div>}
          </div>
