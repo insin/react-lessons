@@ -53,19 +53,20 @@ var LessonsApp = React.createClass({
         router.replaceWith('/0/0')
       }
       else {
-        router.transitionTo(`/${lessons.lessons.length}/0`)
+        router.transitionTo(`/${lessons.length}/0`)
       }
     })
   },
 
   render() {
-    var {lessons, dispatch} = this.props
+    var {dispatch, ...props} = this.props
+    var {currentLessonIndex, currentStepIndex, lessons} = props
     var actions = bindActionCreators(LessonActions, dispatch)
-    var currentLesson = lessons.lessons[lessons.currentLessonIndex]
-    var currentStep = currentLesson.steps[lessons.currentStepIndex]
+    var currentLesson = lessons[currentLessonIndex]
+    var currentStep = currentLesson.steps[currentStepIndex]
     return <div className="LessonsApp" onDragOver={this.handleDragOver} onDrop={this.handleDrop}>
-      <LessonsToolbar {...lessons} {...{currentLesson, currentStep}} actions={actions}/>
-      <Lessons {...lessons} {...{currentLesson, currentStep}} actions={actions}/>
+      <LessonsToolbar {...props} {...{currentLesson, currentStep}} actions={actions}/>
+      <Lessons {...props} {...{currentLesson, currentStep}} actions={actions}/>
     </div>
   }
 })
@@ -74,6 +75,6 @@ var LessonsApp = React.createClass({
 // param changes in LessonsApp#componentWillReceiveProps. Using the connect
 // decorator will wrap LessonsApp with a higher-order component which passes
 // lessons state and the dispatch function as props.
-LessonsApp = connect((state) => state)(LessonsApp)
+LessonsApp = connect((state) => state.lessons)(LessonsApp)
 
 module.exports = LessonsApp
