@@ -29,9 +29,9 @@ var LessonOutput = React.createClass({
     var errorMessage = ''
     if (code) {
       try {
-        /*eslint-disable no-new-func */
+        /* eslint-disable no-new-func */
         var func = new Function('React', 'output', babel.transform(code, BABEL_OPTIONS).code)
-        /*eslint-enable no-new-func */
+        /* eslint-enable no-new-func */
         func.call(this, React, output)
       }
       catch (e) {

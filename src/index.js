@@ -11,9 +11,6 @@ require('codemirror/mode/gfm/gfm')
 require('./utils/codemirror-jsx')
 
 var React = require('react')
-var HashHistory = require('react-router/lib/HashHistory')
 var App = require('./containers/App')
 
-var history = new HashHistory()
-
-React.render(<App history={history}/>, document.getElementById('app'))
+React.render(<App/>, document.getElementById('app'))

@@ -86,7 +86,7 @@ var LessonsToolbar = React.createClass({
   },
 
   handleAddStep() {
-    var {currentLesson, currentLessonIndex, lessons} = this.props
+    var {currentLesson, currentLessonIndex} = this.props
     this.props.actions.addStep()
     this.context.router.transitionTo(`/${currentLessonIndex}/${currentLesson.steps.length}`)
   },
@@ -100,7 +100,7 @@ var LessonsToolbar = React.createClass({
   },
 
   render() {
-    var {actions, currentLesson, currentLessonIndex, dispatch, editing, lessons} = this.props
+    var {actions, currentLesson, currentLessonIndex, editing, lessons} = this.props
     var instructionsIndex = findInstructionsIndex(lessons)
     var showViewInstructions = instructionsIndex === -1 || instructionsIndex !== currentLessonIndex
     return <div className="LessonsToolbar">
