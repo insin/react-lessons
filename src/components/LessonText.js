@@ -36,7 +36,7 @@ var LessonText = React.createClass({
       {editing
        ? <CodeMirror
            onChange={this.handleChange}
-           options={{mode: 'markdown', lineWrapping: true}}
+           options={{mode: 'gfm', lineWrapping: true}}
            value={step.text}
          />
        : <div>
