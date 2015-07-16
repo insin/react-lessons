@@ -11,6 +11,25 @@ require('codemirror/mode/gfm/gfm')
 require('./utils/codemirror-jsx')
 
 var React = require('react')
-var App = require('./containers/App')
+var {applyMiddleware, createStore} = require('redux')
+var {Provider} = require('react-redux')
+var thunkMiddleware = require('redux-thunk')
+var {Redirect, Router, Route} = require('react-router')
+var {history} = require('react-router/lib/HashHistory')
 
-React.render(<App/>, document.getElementById('app'))
+var LessonsApp = require('./containers/LessonsApp')
+var reducer = require('./reducer')
+
+var renderRoutes = () =>
+  <Router history={history}>
+    <Route path=":lesson/:step" component={LessonsApp}/>
+    <Redirect from="/" to="/0/0" />
+  </Router>
+
+var store = applyMiddleware(thunkMiddleware)(createStore)(reducer)
+
+React.render(
+  <Provider store={store}>{renderRoutes}</Provider>,
+  document.getElementById('app')
+)
+

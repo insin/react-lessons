@@ -1,20 +1,7 @@
 var update = require('react/lib/update')
 
-var {
-  ADD_LESSON,
-  ADD_STEP,
-  DELETE_LESSON,
-  DELETE_STEP,
-  EXECUTE_CODE,
-  IMPORT_LESSONS,
-  SELECT_LESSON,
-  SELECT_STEP,
-  TOGGLE_EDITING,
-  UPDATE_CODE,
-  UPDATE_LESSON,
-  UPDATE_STEP
-} = require('../ActionTypes')
-var uuid = require('../utils/uuid')
+var types = require('./types')
+var uuid = require('./utils/uuid')
 
 function createStep() {
   return {id: uuid(), text: '', code: '', solution: ''}
@@ -37,14 +24,14 @@ module.exports = function lessons(state=defaultState, action) {
   var code
 
   switch (action.type) {
-    case ADD_LESSON:
+    case types.ADD_LESSON:
       return {
         ...state,
         lessons: update(state.lessons, {$push: [createLesson()]}),
         currentLessonIndex: state.lessons.length,
         currentStepIndex: 0
       }
-    case ADD_STEP:
+    case types.ADD_STEP:
       return {
         ...state,
         lessons: update(state.lessons, {
@@ -55,7 +42,7 @@ module.exports = function lessons(state=defaultState, action) {
         currentStepIndex: state.lessons[state.currentLessonIndex].steps.length
       }
     // Assumption: you can only delete lessons when there is more than one
-    case DELETE_LESSON:
+    case types.DELETE_LESSON:
       return {
         ...state,
         lessons: update(state.lessons, {$splice: [[state.currentLessonIndex, 1]]}),
@@ -64,7 +51,7 @@ module.exports = function lessons(state=defaultState, action) {
         currentStepIndex: 0
       }
     // Assumption: you can only delete lesson steps when there is more than one
-    case DELETE_STEP:
+    case types.DELETE_STEP:
       return {
         ...state,
         lessons: update(state.lessons, {
@@ -76,9 +63,9 @@ module.exports = function lessons(state=defaultState, action) {
         currentStepIndex: Math.min(state.currentStepIndex,
                                    state.lessons[state.currentLessonIndex].steps.length - 2)
       }
-    case EXECUTE_CODE:
+    case types.EXECUTE_CODE:
       return {...state, executedCode: action.code}
-    case IMPORT_LESSONS:
+    case types.IMPORT_LESSONS:
       if (Array.isArray(action.imported)) {
         return {
           ...state,
@@ -90,9 +77,9 @@ module.exports = function lessons(state=defaultState, action) {
       return update(state, {
         lessons: {$push: [action.imported]}
       })
-    case TOGGLE_EDITING:
+    case types.TOGGLE_EDITING:
       return {...state, editing: action.editing}
-    case SELECT_LESSON:
+    case types.SELECT_LESSON:
       code = state.lessons[action.lessonIndex].steps[0].code
       return {
         ...state,
@@ -101,7 +88,7 @@ module.exports = function lessons(state=defaultState, action) {
         currentStepIndex: 0,
         executedCode: code
       }
-    case SELECT_STEP:
+    case types.SELECT_STEP:
       code = state.lessons[state.currentLessonIndex].steps[action.stepIndex].code
       return {
         ...state,
@@ -109,15 +96,15 @@ module.exports = function lessons(state=defaultState, action) {
         currentStepIndex: action.stepIndex,
         executedCode: code
       }
-    case UPDATE_CODE:
+    case types.UPDATE_CODE:
       return {...state, code: action.code}
-    case UPDATE_LESSON:
+    case types.UPDATE_LESSON:
       return update(state, {
         lessons: {
           [state.currentLessonIndex]: {$merge: action.update}
         }
       })
-    case UPDATE_STEP:
+    case types.UPDATE_STEP:
       return update(state, {
         lessons: {
           [state.currentLessonIndex]: {

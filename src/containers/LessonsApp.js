@@ -1,15 +1,15 @@
 var React = require('react')
 var {bindActionCreators} = require('redux')
-var {connect} = require('redux/react')
+var {connect} = require('react-redux')
 
-var LessonActions = require('../actions/LessonActions')
+var LessonActions = require('../actions')
 var Lessons = require('../components/Lessons')
 var LessonsToolbar = require('../components/LessonsToolbar')
 var parseJSONFile = require('../utils/parse-json-file')
 
 require('./LessonsApp.css')
 
-var LessonsApp = React.createClass({
+var LessonsApp = connect(state => state)(React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
@@ -69,12 +69,6 @@ var LessonsApp = React.createClass({
       <Lessons {...props} {...{currentLesson, currentStep}} actions={actions}/>
     </div>
   }
-})
-
-// We need to get a hold of the dispatch function in order to respond to URL
-// param changes in LessonsApp#componentWillReceiveProps. Using the connect
-// decorator will wrap LessonsApp with a higher-order component which passes
-// lessons state and the dispatch function as props.
-LessonsApp = connect((state) => state.lessons)(LessonsApp)
+}))
 
 module.exports = LessonsApp
