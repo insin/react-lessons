@@ -51,7 +51,7 @@ module.exports = {
     loaders: [
       {test: /\.js$/, loader: 'babel', exclude: /node_modules/},
       {test: /\.json$/, loader: 'json'},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader')}
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css?-restructuring!autoprefixer')}
     ]
   }
 }

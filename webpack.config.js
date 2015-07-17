@@ -16,6 +16,7 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify('development')}),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
@@ -26,7 +27,7 @@ module.exports = {
     loaders: [
       {test: /\.js$/, loader: 'react-hot!babel', include: path.join(__dirname, 'src')},
       {test: /\.json$/, loader: 'json'},
-      {test: /\.css$/, loader: 'style!css!autoprefixer'}
+      {test: /\.css$/, loader: 'style!css?-restructuring!autoprefixer'}
     ]
   }
 }
